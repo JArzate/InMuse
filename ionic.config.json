@@ -1,0 +1,7 @@
+{
+  "name": "InMuse",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
