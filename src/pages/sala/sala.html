@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Museo de la Muerte
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <section id="banner">
+    <div class="img-cont">
+      <img src="assets/imgs/banner.jpg" class="img-resp">
+    </div>
+
+    <div class="text-cont">
+      <h1>Inframundo</h1>
+    </div>
+    <div class="ellipsis-fab fab" (click)="appear = !appear">
+      <i class="fa fa-ellipsis-v"></i>
+    </div>
+    <div [className]="appear ? 'appear qr-fab fab': 'qr-fab fab'">
+      <i class="fa fa-qrcode"></i>
+    </div>
+    <div [className]="appear ? 'appear search-fab fab': 'search-fab fab'">
+      <i class="fa fa-search"></i>
+    </div>
+
+    <div class="cont-fabs">
+      <div class="info-fab fab">
+        <i class="fa fa-info"></i>
+      </div>
+      <div class="audio-fab fab">
+        <i class="fa fa-volume-up"></i>
+      </div>
+      <div class="feedback-fab fab">
+        <i class="fa fa-comment-alt"></i>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="slider-destacadas">
+    <p class="title-section">Obras destacadas</p>
+    <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
+      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img src="assets/imgs/obra-2.jpg" class="col-12"/>
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img src="assets/imgs/obra-3.jpg" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img src="assets/imgs/obra.jpg" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+
+      </ion-slides>
+    </ion-row>
+  </section>
+
+  <section id="obras-section">
+    <ion-row justify-content-around>
+      <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
+        <img src="assets/imgs/obra.jpg" />
+        <div class="card-text-cont">
+          <div class="card-title">Obra</div>
+          <div class="card-subtitle">Autor</div>
+        </div>
+      </ion-card>
+      <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
+          <img src="assets/imgs/obra-2.jpg" />
+          <div class="card-text-cont">
+            <div class="card-title">Obra</div>
+            <div class="card-subtitle">Autor</div>
+          </div>
+        </ion-card>
+        <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
+            <img src="assets/imgs/obra-3.jpg" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+          <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
+              <img src="assets/imgs/obra.jpg" />
+              <div class="card-text-cont">
+                <div class="card-title">Obra</div>
+                <div class="card-subtitle">Autor</div>
+              </div>
+            </ion-card>
+    </ion-row>
+
+  </section>
+</ion-content>

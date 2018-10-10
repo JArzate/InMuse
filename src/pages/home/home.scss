@@ -1,101 +1,32 @@
-page-home {
-    font-family: "Cinzel";
-    font-size: 16px;
+ion-header{
+    box-shadow: none;
+}
 
-    .toolbar-title.toolbar-title-ios {
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // padding: 5% 2%;
+    width: 100%;
+
+    .title-header{
         font-size: 2rem;
+        font-weight: bold;
+        color: map-get($colors, primary);
     }
 
-    #banner{
-        position: relative;
-        z-index: 0;
-        &:after {
-            content: '';
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.25) 25%,rgba(0,0,0,0.9) 100%);
-        }
-        .text-cont{
-            position: absolute;
-            top:50%;
-            left:50%;
-            z-index: 2;
-            transform: translate(-50%,-50%);
-            width: 100%;
-            h1{
-                color:white;
-                text-align: center;
-                font-size: 5rem;
-                font-weight: bolder;
-            }
-        }
+    .fa-bars{
+        font-size: 2rem;
+        font-weight: bold;
+        color: map-get($colors, secondary);
     }
+}
 
-    .cont-fabs{
-        position: absolute;
-        bottom: 5%;
-        z-index: 2;
+ion-content{
+    #map{
         width: 100%;
-        display: flex;
-        justify-content: space-around;
-
+        height: 50vh;
+        min-height: 400px;
     }
 
-    .fab{
-        position: relative;
-        z-index: 999;
-        border-radius: 50%;
-        background: map-get($colors,secondary);
-        ion-icon{
-            position: absolute;
-            top:50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            color:white;
-            font-size: 2rem;
-        }
-    }
-
-    .qr-fab {
-        position: fixed;
-        border-radius: 10px;
-        top: 8%;
-        right: 5%;
-        background: #247897;
-        padding: 1% 2%;
-        color: white;
-        font-size: 2.5rem;
-        text-align: center;
-    }
-
-    ion-card{
-        position: relative;
-        z-index: 0;
-
-        .card-title{
-            position: absolute;
-            bottom: 10%;
-            left:50%;
-            transform: translate(-50%,0);
-            font-size: 4rem;
-            z-index: 2;
-            color: white;
-        }
-
-        &::after{
-            content:'';
-            content: '';
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.25) 25%,rgba(0,0,0,0.9) 100%);
-        }
-    }
 }
