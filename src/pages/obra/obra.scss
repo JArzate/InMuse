@@ -1,3 +1,21 @@
 page-obra {
+    .cont-fabs {
+        display: flex;
+        justify-content: space-around;
+    }
 
+    #obra{
+        //height: 500px;
+        width: 100%;
+    }
+
+    ion-slides{
+        ion-card.obra{
+            img{
+                width: 100%;
+                min-height: 150px;
+                object-fit: cover;
+            }
+        }
+    }
 }

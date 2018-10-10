@@ -10,7 +10,7 @@ import { ObraPage } from '../pages/obra/obra';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SalaPage;
+  rootPage:any = ObraPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
