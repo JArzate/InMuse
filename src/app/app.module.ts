@@ -1,5 +1,6 @@
-import { SalaPage } from './../pages/sala/sala';
-import { ObraPage } from './../pages/obra/obra';
+import { EventosPage } from './../pages/eventos/eventos';
+import { MuseoPage } from './../pages/museo/museo';
+import { CalendarioPage } from './../pages/calendario/calendario';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -7,18 +8,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
 
-/* ANGULAR GOOGLE MAPS */
-import { AgmCoreModule } from '@agm/core';
-
 import { MyApp } from './app.component';
+/*PAGES*/
 import { HomePage } from '../pages/home/home';
+import { SalaPage } from './../pages/sala/sala';
+import { ObraPage } from './../pages/obra/obra';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ObraPage,
-    SalaPage
+    SalaPage,
+    CalendarioPage,
+    MuseoPage,
+    EventosPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,10 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage,
     ObraPage,
-    SalaPage
+    SalaPage,
+    CalendarioPage,
+    MuseoPage,
+    EventosPage
   ],
   providers: [
     StatusBar,

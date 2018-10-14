@@ -1,19 +1,51 @@
 <ion-header>
-    <div class="header">
-        <div class="title-header">
-            InMuse
-        </div>
-        <div class="icon-cont">
-            <i class="fa fa-bars"></i>
-        </div>
-    </div>
+    <ion-navbar color="primary">
+        <ion-row justify-content-between>
+            <ion-icon name="menu" color="light" col-2></ion-icon>
+            <ion-title col-10>Museo de la Muerte</ion-title>
+        </ion-row>
+    </ion-navbar>
 </ion-header>
 
 <ion-content color="gray">
     <div id="map"></div>
 
-    <div class="calendario">
+    <section id="calendario">
+        <ion-row justify-content-center>
+            <p class="title-section">Próximos eventos</p>
+            <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
+                [zoom]="true">
+                <ion-slide col-12 no-margin no-padding>
+                    <ion-card col-12 no-margin no-padding class="evento">
+                        <img src="assets/imgs/evento.jpg" />
+                        <div class="card-text-cont">
+                            <div class="card-title">Nombre del evento</div>
+                            <div class="card-subtitle">Fecha</div>
+                        </div>
+                    </ion-card>
+                </ion-slide>
+                <ion-slide col-12 no-margin no-padding>
+                    <ion-card col-12 no-margin no-padding class="evento">
+                        <img src="assets/imgs/evento2.jpg" />
+                        <div class="card-text-cont">
+                            <div class="card-title">Nombre del evento</div>
+                            <div class="card-subtitle">Fecha</div>
+                        </div>
+                    </ion-card>
+                </ion-slide>
+                <ion-slide col-12 no-margin no-padding>
+                    <ion-card col-12 no-margin no-padding class="evento">
+                        <img src="assets/imgs/evento.jpg" />
+                        <div class="card-text-cont">
+                            <div class="card-title">Nombre del evento</div>
+                            <div class="card-subtitle">Fecha</div>
+                        </div>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
 
-    </div>
+            <a href="#" class="btn" (click)="IrCalendario()">Ver más</a>
+        </ion-row>
+    </section>
 
 </ion-content>

@@ -22,11 +22,52 @@ ion-header{
     }
 }
 
+ion-card.evento{
+    position: relative;
+    z-index: 0;
+    img{
+        min-height: 300px;
+        object-fit: cover;
+    }
+
+    .card-text-cont{
+        z-index: 2;
+        position: absolute;
+        width: 100%;
+        height: 25%;
+        bottom: 0;
+        left: 0;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .card-title{
+            font-family: 'Fira sans';
+            font-size: 3rem;
+        }
+    }
+
+    &::after{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom,transparent,map-get($colors,secondary));
+    }
+}
 ion-content{
     #map{
         width: 100%;
-        height: 50vh;
+        height: 80vh;
         min-height: 400px;
     }
 
+}
+
+.btn{
+    margin: 5% 0;
 }
