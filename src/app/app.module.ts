@@ -1,5 +1,6 @@
-import { SalaPage } from './../pages/sala/sala';
-import { ObraPage } from './../pages/obra/obra';
+import { EventosPage } from './../pages/eventos/eventos';
+import { MuseoPage } from './../pages/museo/museo';
+import { CalendarioPage } from './../pages/calendario/calendario';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -9,11 +10,11 @@ import {Geolocation} from '@ionic-native/geolocation';
 import { StarRatingModule } from 'angular-star-rating';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
-/* ANGULAR GOOGLE MAPS */
-import { AgmCoreModule } from '@agm/core';
-
 import { MyApp } from './app.component';
+/*PAGES*/
 import { HomePage } from '../pages/home/home';
+import { SalaPage } from './../pages/sala/sala';
+import { ObraPage } from './../pages/obra/obra';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { ElasticHeader } from '../directives/elastic-header/elastic-header';
 
@@ -25,6 +26,9 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     SalaPage,
     FeedbackPage,
     ElasticHeader
+    CalendarioPage,
+    MuseoPage,
+    EventosPage
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,9 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     ObraPage,
     SalaPage,
     FeedbackPage
+    CalendarioPage,
+    MuseoPage,
+    EventosPage
   ],
   providers: [
     StatusBar,

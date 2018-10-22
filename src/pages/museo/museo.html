@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Bienvenido
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <section id="banner">
+    <div class="img-cont">
+      <img src="assets/imgs/museo.jpg" class="img-resp">
+    </div>
+    <div class="text-cont">
+      <p class="title-sala">Museo de la muerte</p>
+    </div>
+
+    <div class="cont-fabs">
+      <div class="info-fab fab">
+        <i class="fa fa-star"></i>
+      </div>
+      <div class="audio-fab fab">
+        <i class="fa fa-volume-up"></i>
+      </div>>
+    </div>
+  </section>
+
+  <section id="info-museo" [className]="leer_mas? 'extended':''">
+    <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a>
+    <ion-row>
+      <p class="parrafo" margin>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
+        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
+        Repudiandae!
+      </p>
+    </ion-row>
+    <ion-row *ngIf="leer_mas" >
+        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
+        <p class="parrafo" margin>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
+          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
+          Repudiandae!
+        </p>
+    </ion-row>
+    <ion-row *ngIf="leer_mas" >
+        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
+        <p class="parrafo" margin>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
+          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
+          Repudiandae!
+        </p>
+    </ion-row>
+    <ion-row *ngIf="leer_mas" >
+        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
+        <p class="parrafo" margin>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
+          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
+          Repudiandae!
+        </p>
+    </ion-row>
+    <ion-row *ngIf="leer_mas" >
+        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
+        <p class="parrafo" margin>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
+          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
+          Repudiandae!
+        </p>
+    </ion-row>
+      
+  </section>
+
+  <section id="colecciones">
+      <p class="title-section">Colecciones en exposición</p>
+      <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
+        <ion-slides [autoplay]="1500" [effect]="'fade'" [control]="true" [loop]="true" [zoom]="true">
+          <ion-slide col-12 no-margin no-padding>
+            <ion-card no-margin no-padding class="obra">
+              <img class="img-resp" src="assets/imgs/banner.jpg" class="col-12" />
+              <div class="card-text-cont">
+                <div class="card-title">Nombre sala</div>
+              </div>
+            </ion-card>
+          </ion-slide>
+        
+          <ion-slide col-12 no-margin no-padding>
+            <ion-card no-margin no-padding class="obra">
+              <img class="img-resp" src="assets/imgs/banner-2.jpg" />
+              <div class="card-text-cont">
+                <div class="card-title">Nombre salara</div>
+              </div>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide col-12 no-margin no-padding>
+              <ion-card no-margin no-padding class="obra">
+                <img class="img-resp" src="assets/imgs/banner.jpg" class="col-12" />
+                <div class="card-text-cont">
+                  <div class="card-title">Nombre sala</div>
+                </div>
+              </ion-card>
+            </ion-slide>
+          
+            <ion-slide col-12 no-margin no-padding>
+              <ion-card no-margin no-padding class="obra">
+                <img class="img-resp" src="assets/imgs/banner-2.jpg" />
+                <div class="card-text-cont">
+                  <div class="card-title">Nombre salara</div>
+                </div>
+              </ion-card>
+            </ion-slide>
+        </ion-slides>
+      </ion-row>
+  </section>
+
+  <section id="slider-destacadas">
+    <p class="title-section">Obras destacadas</p>
+    <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
+      <ion-slides [autoplay]="1700" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img class="img-resp" src="assets/imgs/obra-2.jpg" class="col-12" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img class="img-resp" src="assets/imgs/obra-3.jpg" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+        <ion-slide col-12 no-margin no-padding>
+          <ion-card col-12 no-margin no-padding class="obra">
+            <img class="img-resp" src="assets/imgs/obra.jpg" />
+            <div class="card-text-cont">
+              <div class="card-title">Obra</div>
+              <div class="card-subtitle">Autor</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </section>
+
+</ion-content>

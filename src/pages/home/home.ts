@@ -1,3 +1,4 @@
+import { CalendarioPage } from './../calendario/calendario';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -17,24 +18,27 @@ export class HomePage {
 
   ngOnInit(): void {
     let mapOptions = {
-      zoom: 15,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControlOptions: false,
       streetViewControl: false,
       fullscreenControl: false
     }
     this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+ 
+    // this.geolocation.getCurrentPosition().then((pos) => {
+    //   let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
-    this.geolocation.getCurrentPosition().then((pos) => {
-      let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-      
-      let marker =  new google.maps.Marker({
-        position: latLng,
-        map: this.map,
-      });
+    //   let marker = new google.maps.Marker({
+    //     position: latLng,
+    //     map: this.map,
+    //   });
+    //   this.map.setCenter(latLng);
+    // });
+  }
 
-      this.map.setCenter(latLng);
-    });
+  IrCalendario = () => {
+    this.navCtrl.push(CalendarioPage);
   }
 
 }

@@ -13,10 +13,11 @@
     </div>
 
     <div class="text-cont">
-      <h1>Inframundo</h1>
+      <p class="title-sala">Inframundo</p>
     </div>
     <div class="ellipsis-fab fab" (click)="appear = !appear">
-      <i class="fa fa-ellipsis-v"></i>
+      <i class="fa fa-ellipsis-v" *ngIf="!appear"></i>
+      <i class="fa fa-times" *ngIf="appear"></i>
     </div>
     <div [className]="appear ? 'appear qr-fab fab': 'qr-fab fab'">
       <i class="fa fa-qrcode"></i>
@@ -45,7 +46,7 @@
       <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
         <ion-slide col-12 no-margin no-padding>
           <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra-2.jpg" class="col-12"/>
+            <img class="img-resp" src="assets/imgs/obra-2.jpg" class="col-12"/>
             <div class="card-text-cont">
               <div class="card-title">Obra</div>
               <div class="card-subtitle">Autor</div>
@@ -54,7 +55,7 @@
         </ion-slide>
         <ion-slide col-12 no-margin no-padding>
           <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra-3.jpg" />
+            <img class="img-resp" src="assets/imgs/obra-3.jpg" />
             <div class="card-text-cont">
               <div class="card-title">Obra</div>
               <div class="card-subtitle">Autor</div>
@@ -63,7 +64,7 @@
         </ion-slide>
         <ion-slide col-12 no-margin no-padding>
           <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra.jpg" />
+            <img class="img-resp" src="assets/imgs/obra.jpg" />
             <div class="card-text-cont">
               <div class="card-title">Obra</div>
               <div class="card-subtitle">Autor</div>
@@ -78,28 +79,28 @@
   <section id="obras-section">
     <ion-row justify-content-around>
       <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
-        <img src="assets/imgs/obra.jpg" />
+        <img class="img-resp" src="assets/imgs/obra.jpg" />
         <div class="card-text-cont">
           <div class="card-title">Obra</div>
           <div class="card-subtitle">Autor</div>
         </div>
       </ion-card>
       <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
-          <img src="assets/imgs/obra-2.jpg" />
+          <img class="img-resp" src="assets/imgs/obra-2.jpg" />
           <div class="card-text-cont">
             <div class="card-title">Obra</div>
             <div class="card-subtitle">Autor</div>
           </div>
         </ion-card>
         <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
-            <img src="assets/imgs/obra-3.jpg" />
+            <img class="img-resp" src="assets/imgs/obra-3.jpg" />
             <div class="card-text-cont">
               <div class="card-title">Obra</div>
               <div class="card-subtitle">Autor</div>
             </div>
           </ion-card>
           <ion-card col-sm-12 col-md-5 col-lg-4 class="obra">
-              <img src="assets/imgs/obra.jpg" />
+              <img  class="img-resp" src="assets/imgs/obra.jpg" />
               <div class="card-text-cont">
                 <div class="card-title">Obra</div>
                 <div class="card-subtitle">Autor</div>

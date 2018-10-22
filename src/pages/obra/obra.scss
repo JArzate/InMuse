@@ -9,6 +9,12 @@ page-obra {
         width: 100%;
     }
 
+    #info-obra{
+        ion-row{
+            margin-bottom:10%   ;
+        }
+    }
+
     ion-slides{
         ion-card.obra{
             img{
