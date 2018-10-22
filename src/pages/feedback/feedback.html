@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      FeedBack
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content elastic-header>
+  <section id="obra">
+    <div class="img-cont">
+      <img src="assets/imgs/obra-2.jpg" alt="" class="img-resp">
+      <h1 class="parrafo">LA NIÑA PINTADA</h1>
+    </div>
+  </section>
+
+  <section id="info-obra" class="main-content">
+    <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
+      <p class="title-obra">Cuentanos tu experiencia con esta obra</p>
+    </ion-row>
+    <div class="str-rtn">
+    <rating [(ngModel)]="rate" 
+        readOnly="false"
+        max="5" 
+        emptyStarIconName="star-outline" 
+        halfStarIconName="star-half" 
+        starIconName="star" 
+        nullable="false">
+        <!--(ngModelChange)="onModelChange($event)">--> 
+    </rating>
+    </div>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing 
+      and typesetting industry. Lorem Ipsum has been the industry's 
+      standard dummy text ever since the 1500s, when an unknown printer 
+      took a galley of type and scrambled it to make a type specimen book. 
+      It has survived not only five centuries, but also the leap into electronic typesetting, 
+      remaining essentially unchanged. It was popularised in the 1960s with the release 
+      of Letraset sheets containing Lorem Ipsum passages, and more recently 
+      with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+  </section>
+
+</ion-content>
