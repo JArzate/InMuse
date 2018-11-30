@@ -2,7 +2,7 @@ import { EventoModelo } from './../../modelos/evento-modelo';
 import { CalendarioPage } from './../calendario/calendario';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Alert, AlertController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -12,6 +12,7 @@ import {
   MarkerOptions,
   Marker
 } from '@ionic-native/google-maps';
+import { EventoProvider } from '../../providers/evento/evento';
 
 
 @Component({
@@ -22,12 +23,18 @@ export class HomePage {
    map: GoogleMap;
    arrayModeloEventos:Array<EventoModelo>;
 
-  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps) {
+  constructor(
+    public navCtrl: NavController,
+    private googleMaps: GoogleMaps,
+    private servicioEvento: EventoProvider,
+    private alert:AlertController
+  ) {
 
   }
 
   ngOnInit(): void {
-     this.loadMap();
+     //this.loadMap();
+     this.getEventosProximos();
   }
 
   loadMap(){
@@ -73,6 +80,17 @@ export class HomePage {
 
   IrCalendario = () => {
     this.navCtrl.push(CalendarioPage);
+  }
+
+  getEventosProximos(){
+    this.servicioEvento.getEventosProximos().then(response=>{
+      console.log(response);
+    }).catch(err=>{
+      this.alert.create({
+        title:"Error",
+        message: JSON.stringify(err)
+      }).present();
+    });
   }
 
   

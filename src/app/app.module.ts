@@ -23,6 +23,7 @@ import { SalaProvider } from '../providers/sala/sala';
 import { ObraProvider } from '../providers/obra/obra';
 import { ArtistaProvider } from '../providers/artista/artista';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],

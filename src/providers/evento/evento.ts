@@ -22,7 +22,7 @@ export class EventoProvider {
   }
 
   getEventosProximos = () => {
-    return this.http.get(API_URL + "/museolistaEventos/", HTTPOptions).toPromise();
+    return this.http.get(API_URL + "/listaEventos", HTTPOptions).toPromise();
   }
 
   getEvento = (idEvento:String) => {
