@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SalaPage } from './../pages/sala/sala';
 import { ObraPage } from './../pages/obra/obra';
+import { MuseoProvider } from '../providers/museo/museo';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ObraPage } from './../pages/obra/obra';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
+    MuseoProvider
   ]
 })
 export class AppModule {}
