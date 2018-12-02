@@ -14,12 +14,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'feedback.html',
 })
 export class FeedbackPage {
-
+  avg: number;
+  comment: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.avg =0;
+    this.comment = "";
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedbackPage');
+  }
+
+  onModelChange($event){
+    console.log(this.avg);
+  }
+
+  sendComment(){
+    console.log(this.comment);
   }
 
 }

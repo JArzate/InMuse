@@ -25,7 +25,7 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     ObraPage,
     SalaPage,
     FeedbackPage,
-    ElasticHeader
+    ElasticHeader,
     CalendarioPage,
     MuseoPage,
     EventosPage
@@ -42,7 +42,7 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage
+    FeedbackPage,
     CalendarioPage,
     MuseoPage,
     EventosPage
