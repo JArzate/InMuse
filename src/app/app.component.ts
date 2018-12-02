@@ -1,3 +1,4 @@
+import { HomePage } from './../pages/home/home';
 import { EventosPage } from './../pages/eventos/eventos';
 import { MuseoPage } from './../pages/museo/museo';
 import { CalendarioPage } from './../pages/calendario/calendario';
@@ -8,13 +9,11 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { FeedbackPage } from '../pages/feedback/feedback';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
-  rootPage:any = EventosPage;
+export class MyApp { 
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

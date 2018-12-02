@@ -7,14 +7,23 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
-import { StarRatingModule } from 'angular-star-rating';
-import { Ionic2RatingModule } from 'ionic2-rating';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { IonicStorageModule } from '@ionic/storage';
+
+
 
 import { MyApp } from './app.component';
 /*PAGES*/
 import { HomePage } from '../pages/home/home';
 import { SalaPage } from './../pages/sala/sala';
 import { ObraPage } from './../pages/obra/obra';
+import { MuseoProvider } from '../providers/museo/museo';
+import { EventoProvider } from '../providers/evento/evento';
+import { SalaProvider } from '../providers/sala/sala';
+import { ObraProvider } from '../providers/obra/obra';
+import { ArtistaProvider } from '../providers/artista/artista';
+import { UsuarioProvider } from '../providers/usuario/usuario';
+import { HttpClientModule } from '@angular/common/http';
 import { FeedbackPage } from '../pages/feedback/feedback';
 import { ElasticHeader } from '../directives/elastic-header/elastic-header';
 
@@ -32,9 +41,9 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
-    StarRatingModule.forRoot(),
-    Ionic2RatingModule
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -51,7 +60,14 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Geolocation
+    Geolocation,
+    GoogleMaps,
+    MuseoProvider,
+    EventoProvider,
+    SalaProvider,
+    ObraProvider,
+    ArtistaProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}
