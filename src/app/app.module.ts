@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import {Geolocation} from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
+import { NativeAudio } from '@ionic-native/native-audio'
 
 
 
@@ -24,8 +25,9 @@ import { ObraProvider } from '../providers/obra/obra';
 import { ArtistaProvider } from '../providers/artista/artista';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
-import { FeedbackPage } from '../pages/feedback/feedback';
+//import { FeedbackPage } from '../pages/feedback/feedback';
 import { ElasticHeader } from '../directives/elastic-header/elastic-header';
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage,
+    //FeedbackPage,
     ElasticHeader,
     CalendarioPage,
     MuseoPage,
@@ -51,7 +53,7 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage,
+    //FeedbackPage,
     CalendarioPage,
     MuseoPage,
     EventosPage
@@ -67,7 +69,9 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     SalaProvider,
     ObraProvider,
     ArtistaProvider,
-    UsuarioProvider
+    UsuarioProvider,
+    NativeAudio,
+    StreamingMedia
   ]
 })
 export class AppModule {}

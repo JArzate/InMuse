@@ -16,7 +16,7 @@ export class MuseoProvider {
   }
 
   getMuseo = (idMuseo:String) => {
-    return this.http.get(API_URL + "/museolistaEventos/" + idMuseo ,HTTPOptions).toPromise();
+    return this.http.get(API_URL + "/museo/" + idMuseo ,HTTPOptions).toPromise();
   }
 
 }
