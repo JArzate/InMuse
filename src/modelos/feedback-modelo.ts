@@ -9,13 +9,13 @@ import { PreguntaModelo } from './pregunta-model';
 
 
 export class FeedBackModelo{
-    _id?:String;
-    strIdMuseo:String;
-    strColeccion:String;
-    strIdColeccion:String;
+    _id?:string;
+    strIdMuseo:string;
+    strColeccion:string;
+    strIdColeccion:string;
     dteCreacion:Date = new Date();
-    strEmocion:String;
-    strComentario?:String;
+    strEmocion:string;
+    strComentario?:string;
     arrayPreguntas?: Array<PreguntaModelo> =  [];
     
     constructor(values: Object = {}) {

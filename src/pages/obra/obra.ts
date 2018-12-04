@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ObraModelo } from '../../modelos/obra-model';
 import { ObraProvider } from '../../providers/obra/obra';
+import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
 
 /**
  * Generated class for the ObraPage page.
@@ -22,7 +23,8 @@ export class ObraPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public servicioObra: ObraProvider,
-    public alert: AlertController
+    public alert: AlertController,
+    private streamingMedia: StreamingMedia
     ) {
     this.modeloObra = new ObraModelo();
     this.arrayModeloObra = new Array();
@@ -38,7 +40,17 @@ export class ObraPage {
     
   }
 
-  getObra(){
+  reproducirAudio(){
+    console.log("va a reproducir");
+    let options: StreamingAudioOptions = {
+      successCallback: () => { console.log('Video played') },
+      errorCallback: (e) => { console.log('Error streaming') },
+      bgImage: this.modeloObra.arrayStrImagen[0]
+    };
+    this.streamingMedia.playAudio(this.modeloObra.strAudioDescripcion,options);
+  }
+
+  async getObra(){
     this.servicioObra.getObra("5bfab67d80250016e6470801").then((response:any)=>{
       if(response.intStatus == 1){
         this.modeloObra = new ObraModelo(response.jsnAnswer);

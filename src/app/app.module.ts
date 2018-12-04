@@ -69,7 +69,6 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     ObraProvider,
     ArtistaProvider,
     UsuarioProvider,
-    NativeAudio,
     StreamingMedia
   ]
 })

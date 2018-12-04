@@ -1,4 +1,8 @@
 page-sala {
+        ion-slide{
+            position: relative;
+            z-index:0;
+        }
         .cont-fabs{
             position: absolute;
             bottom: 5%;

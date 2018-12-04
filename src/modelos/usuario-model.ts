@@ -9,14 +9,14 @@
 // }).required();
 
 export class UsuarioModelo{
-    _id:String;
-    strNombre:String = "";
-    strApellido?:String = "";
-    strCorreo:String = "";
+    _id:string;
+    strNombre:string = "";
+    strApellido?:string = "";
+    strCorreo:string = "";
     dteNacimiento:Date = new Date(); 
-    strPassword:String = "";
+    strPassword:string = "";
     intPuntaje?:Number = 0;
-    strRol:String = "usuario";
+    strRol:string = "usuario";
     blnPremium:Boolean = false;
     
     constructor(values: Object = {}) {

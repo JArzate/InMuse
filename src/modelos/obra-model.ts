@@ -17,17 +17,17 @@ import { ArtistaModelo } from './artista-model';
 // }).required();
 
 export class ObraModelo{
-    _id?:String = "";
-    strIdSala:String = "";
-    strIdMuseo:String = "";
-    strTitulo:String = "";
+    _id?:string = "";
+    strIdSala:string = "";
+    strIdMuseo:string = "";
+    strTitulo:string = "";
     arrayModeloArtista:Array<ArtistaModelo> = Array();
-    arrayStrIdArtista:Array<String> = Array();
-    strDescripcion:String = "";
-    strAudioDescripcion?:String = "";
-    arrayStrDatosCuriosos?:Array<String> = [""];
+    arrayStrIdArtista:Array<string> = Array();
+    strDescripcion:string = "";
+    strAudioDescripcion?:string = "";
+    arrayStrDatosCuriosos?:Array<string> = [""];
     dteCreacion:Date = new Date();
-    arrayStrImagen:Array<String> = Array();
+    arrayStrImagen:Array<string> = Array();
     blnActivo: Boolean = true;
     blnDestacadaSala:Boolean =false;
     blnDestacadaMuseo:Boolean = false;

@@ -2,14 +2,14 @@ import { ObraModelo } from './obra-model';
 import { ArtistaModelo } from './artista-model';
 
 export class SalaModelo{
-    _id?:String;
-    strIdMuseo:String;
-    strNombre:String;
-    strDescripcion:String;
-    strAudioDescripcion?:String;
+    _id?:string;
+    strIdMuseo:string;
+    strNombre:string;
+    strDescripcion:string;
+    strAudioDescripcion?:string;
     dteCreacion:Date = new Date();
-    arrayStrDatosCuriosos?:Array<String> = [""];
-    arrayStrImagen:Array<String> = new Array();
+    arrayStrDatosCuriosos?:Array<string> = [""];
+    arrayStrImagen:Array<string> = new Array();
     blnDestacadaMuseo:Boolean = false;
     blnActivo: Boolean = true;
     arrayModeloArtista:Array<ArtistaModelo> = Array();

@@ -35,7 +35,7 @@
         <i class="fa fa-info"></i>
       </div>
       <div class="audio-fab fab">
-        <i class="fa fa-volume-up"></i>
+        <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
       </div>
       <div class="feedback-fab fab">
         <i class="fa fa-comment-alt"></i>
@@ -44,14 +44,14 @@
 
   </section>
 
-  <section id="info-sala" [className]="leer_mas? 'extended':''">
-    <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a>
+  <section id="info-sala" class="extended">
+    <!-- <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a> -->
     <ion-row>
       <p class="parrafo" margin>
         {{modeloSala.strDescripcion}}
       </p>
     </ion-row>
-    <ion-row *ngIf="leer_mas" >
+    <ion-row  >
         <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloSala.arrayStrImagen[0]+')'}">Datos Curiosos</p>
         <p class="parrafo" margin *ngFor="let dato of modeloSala.arrayStrDatosCuriosos">
           * {{dato}}
@@ -59,10 +59,10 @@
     </ion-row>
   </section>
 
-  <section id="slider-destacadas">
+  <section id="slider-destacadas" *ngIf="modeloSala.arrayModeloObraDestacada.length > 0">
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-      <ion-slides *ngIf="modeloSala.arrayModeloObraDestacada.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
+      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
         <ion-slide col-12 no-margin no-padding *ngFor="let obra of modeloSala.arrayModeloObraDestacada">
           <ion-card col-12 no-margin no-padding class="obra">
             <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" class="col-12"/>
@@ -77,6 +77,7 @@
   </section>
 
   <section id="obras-section" *ngIf="modeloSala.arrayModeloObra.length > 0">
+    <p class="title-section">Obras</p>
     <ion-row justify-content-around>
       <ion-card col-sm-12 col-md-5 col-lg-4 class="obra" *ngFor="let obra of modeloSala.arrayModeloObra">
         <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" />
