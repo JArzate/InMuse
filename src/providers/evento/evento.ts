@@ -26,7 +26,7 @@ export class EventoProvider {
   }
 
   getEvento = (idEvento:String) => {
-    return this.http.get(API_URL + "/evento/" + idEvento, HTTPOptions).toPromise();
+    return this.http.get(API_URL + "/museolistaEventos/" + idEvento, HTTPOptions).toPromise();
   }
 
 }
