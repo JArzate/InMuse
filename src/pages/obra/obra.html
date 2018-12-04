@@ -8,9 +8,13 @@
 
 <ion-content>
   <section id="obra">
-    <div class="img-cont">
-      <img src="assets/imgs/obra-2.jpg" alt="" class="img-resp">
-    </div>
+    <ion-slides *ngIf="modeloObra.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
+        [zoom]="true">
+        
+        <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloObra.arrayStrImagen">
+            <img src="{{image}}" class="img-resp">
+        </ion-slide>
+    </ion-slides>
   </section>
 
   <div class="cont-fabs">
@@ -27,115 +31,37 @@
 
   <section id="info-obra">
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-      <p class="title-obra">La niña pintada</p>
-      <p class="title-autor">Autor: <span> Desconocido </span></p>
-      <p class="fecha">Marzo 2015</p>
+      <p class="title-obra">{{modeloObra.strTitulo}}</p>
+      <p class="title-autor">{{modeloObra.arrayModeloArtista.length > 1 ? "Autores:" : "Autor:" }} <span *ngFor="let autor of modeloObra.arrayModeloArtista; let i = index"> {{ (i+1)==modeloObra.arrayModeloArtista.length ? autor.strNombre : autor.strNombre+"," }} </span></p>
+      <p class="fecha">{{modeloObra.dteCreacion | date:'d MMMM yy'}}</p>
     </ion-row>
     <ion-row>
       <p class="parrafo" margin>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-        <br>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo asperiores, laborum accusantium consequuntur
-        voluptatem ipsam fugit debitis ab aliquid quaerat cum! Aliquam facilis praesentium optio, iste dicta mollitia
-        veritatis non.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius
-        totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-        <br>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo asperiores, laborum accusantium consequuntur
-        voluptatem ipsam fugit debitis ab aliquid quaerat cum! Aliquam facilis praesentium optio, iste dicta mollitia
-        veritatis non.
+        {{modeloObra.strDescripcion}}
       </p>
     </ion-row>
     <ion-row>
-      <p class="titulo-pequeno" style="background-image: url(assets/imgs/obra-2.jpg);">Corriente Artística</p>
-      <p class="parrafo" margin>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
+      <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloObra.arrayStrImagen[0]+')'}">Datos Curiosos</p>
+      <p class="parrafo" margin *ngFor="let dato of modeloObra.arrayStrDatosCuriosos">
+        * {{dato}}
       </p>
     </ion-row>
-    <ion-row>
-      <p class="titulo-pequeno" style="background-image: url(assets/imgs/obra-2.jpg);">Tiempo Histórico</p>
-      <p class="parrafo" margin>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-        <br>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo asperiores, laborum accusantium consequuntur
-        voluptatem ipsam fugit debitis ab aliquid quaerat cum! Aliquam facilis praesentium optio, iste dicta mollitia
-        veritatis non.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius
-        totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-      </p>
-    </ion-row>
-    <ion-row>
-      <p class="titulo-pequeno" style="background-image: url(assets/imgs/obra-2.jpg);">Material</p>
-      <div class="parrafo" margin>
-        <ul no-margin>
-          <li>Material 1</li>
-          <li>Material 2</li>
-          <li>Material 3</li>
-          <li>Material 4</li>
-          <li>Material 5</li>
-        </ul>
-      </div>
-    </ion-row>
-    <ion-row>
-      <p class="titulo-pequeno" style="background-image: url(assets/imgs/obra-2.jpg);">Datos Curiosos</p>
-      <p class="parrafo" margin>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo asperiores, laborum accusantium consequuntur
-        voluptatem ipsam fugit debitis ab aliquid quaerat cum! Aliquam facilis praesentium optio, iste dicta mollitia
-        veritatis non.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius
-        totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-      </p>
-    </ion-row>
-    <ion-row>
-      <p class="titulo-pequeno" style="background-image: url(assets/imgs/obra-2.jpg);">Técnica</p>
-      <p class="parrafo" margin>
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
-      </p>
-    </ion-row>
+    
   </section>
 
   <section id="obras-section">
-    <ion-row>
+    <ion-row *ngIf="arrayModeloObra.length > 0">
       <p class="title-section">Obras relacionadas</p>
       <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
-        <ion-slide col-12 no-margin no-padding>
+        <ion-slide col-12 no-margin no-padding *ngFor="let obra of arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra-2.jpg" class="col-12" />
+            <img src="{{obra.arrayStrImagen[0]}}" class="col-12" />
             <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
+              <div class="card-title">{{obra.strTitulo}}</div>
+              <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>
             </div>
           </ion-card>
         </ion-slide>
-        <ion-slide col-12 no-margin no-padding>
-          <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra-3.jpg" />
-            <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
-            </div>
-          </ion-card>
-        </ion-slide>
-        <ion-slide col-12 no-margin no-padding>
-          <ion-card col-12 no-margin no-padding class="obra">
-            <img src="assets/imgs/obra.jpg" />
-            <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
-            </div>
-          </ion-card>
-        </ion-slide>
-
       </ion-slides>
     </ion-row>
   </section>

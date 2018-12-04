@@ -24,7 +24,6 @@ import { ObraProvider } from '../providers/obra/obra';
 import { ArtistaProvider } from '../providers/artista/artista';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
-import { FeedbackPage } from '../pages/feedback/feedback';
 import { ElasticHeader } from '../directives/elastic-header/elastic-header';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage,
     ElasticHeader,
     CalendarioPage,
     MuseoPage,
@@ -51,7 +49,6 @@ import { ElasticHeader } from '../directives/elastic-header/elastic-header';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage,
     CalendarioPage,
     MuseoPage,
     EventosPage

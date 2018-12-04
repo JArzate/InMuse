@@ -12,32 +12,15 @@
     <section id="calendario">
         <ion-row justify-content-center>
             <p class="title-section">Próximos eventos</p>
-            <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
+            <ion-slides *ngIf="arrayModeloEventos.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
                 [zoom]="true">
-                <ion-slide col-12 no-margin no-padding>
+                
+                <ion-slide col-12 no-margin no-padding *ngFor="let item of arrayModeloEventos">
                     <ion-card col-12 no-margin no-padding class="evento">
-                        <img src="assets/imgs/evento.jpg" />
+                        <img src="{{item.arrayStrImagen[0]}}" />
                         <div class="card-text-cont">
-                            <div class="card-title">Nombre del evento</div>
-                            <div class="card-subtitle">Fecha</div>
-                        </div>
-                    </ion-card>
-                </ion-slide>
-                <ion-slide col-12 no-margin no-padding>
-                    <ion-card col-12 no-margin no-padding class="evento">
-                        <img src="assets/imgs/evento2.jpg" />
-                        <div class="card-text-cont">
-                            <div class="card-title">Nombre del evento</div>
-                            <div class="card-subtitle">Fecha</div>
-                        </div>
-                    </ion-card>
-                </ion-slide>
-                <ion-slide col-12 no-margin no-padding>
-                    <ion-card col-12 no-margin no-padding class="evento">
-                        <img src="assets/imgs/evento.jpg" />
-                        <div class="card-text-cont">
-                            <div class="card-title">Nombre del evento</div>
-                            <div class="card-subtitle">Fecha</div>
+                            <div class="card-title">{{item.strNombre}}</div>
+                            <div class="card-subtitle">{{item.dteCreacion | date:'d MMMM yyyy'}}</div>
                         </div>
                     </ion-card>
                 </ion-slide>
