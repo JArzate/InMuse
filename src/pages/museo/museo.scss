@@ -8,6 +8,10 @@ page-museo {
         justify-content: space-around;
     }
 
+    ion-slides ion-card.obra .card-text-cont{
+        width:100%;
+    }
+
     #info-museo{
         position: relative;
         margin-bottom: 15%;

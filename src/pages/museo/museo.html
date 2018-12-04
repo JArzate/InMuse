@@ -9,10 +9,10 @@
 <ion-content>
   <section id="banner">
     <div class="img-cont">
-      <img src="assets/imgs/museo.jpg" class="img-resp">
+      <img src="{{modeloMuseo.arrayStrImagen[0]}}" class="img-resp">
     </div>
     <div class="text-cont">
-      <p class="title-sala">Museo de la muerte</p>
+      <p class="title-sala">{{modeloMuseo.strNombre}}</p>
     </div>
 
     <div class="cont-fabs">
@@ -20,8 +20,8 @@
         <i class="fa fa-star"></i>
       </div>
       <div class="audio-fab fab">
-        <i class="fa fa-volume-up"></i>
-      </div>>
+        <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
+      </div>
     </div>
   </section>
 
@@ -29,85 +29,37 @@
     <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a>
     <ion-row>
       <p class="parrafo" margin>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-        consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-        Repudiandae!
+        {{modeloMuseo.strDescripcion}}
       </p>
     </ion-row>
     <ion-row *ngIf="leer_mas" >
-        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
-        <p class="parrafo" margin>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-          Repudiandae!
+        <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloMuseo.arrayStrImagen[0]+')'}">Fundadores</p>
+        <p class="parrafo" margin *ngFor="let fundador of modeloMuseo.arrayStrNombreFundador">
+          • {{fundador}}
         </p>
     </ion-row>
-    <ion-row *ngIf="leer_mas" >
-        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
-        <p class="parrafo" margin>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-          Repudiandae!
+    <ion-row *ngIf="leer_mas && modeloMuseo.arrayStrDatosCuriosos.length>0" >
+        <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloMuseo.arrayStrImagen[0]+')'}">Datos Curiosos</p>
+        <p class="parrafo" margin *ngFor="let dato of modeloMuseo.arrayStrDatosCuriosos">
+          • {{dato}}
         </p>
     </ion-row>
-    <ion-row *ngIf="leer_mas" >
-        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
-        <p class="parrafo" margin>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-          Repudiandae!
-        </p>
-    </ion-row>
-    <ion-row *ngIf="leer_mas" >
-        <p class="titulo-pequeno" style="background-image: url(assets/imgs/museo.jpg);">Fundador</p>
-        <p class="parrafo" margin>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium quaerat odio facere eius totam beatae
-          consectetur aut iure eveniet molestias enim est alias dicta quisquam pariatur, voluptatibus adipisci sapiente!
-          Repudiandae!
-        </p>
-    </ion-row>
+    
       
   </section>
 
   <section id="colecciones">
       <p class="title-section">Colecciones en exposición</p>
       <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-        <ion-slides [autoplay]="1500" [effect]="'fade'" [control]="true" [loop]="true" [zoom]="true">
-          <ion-slide col-12 no-margin no-padding>
+        <ion-slides *ngIf="modeloMuseo.arrayModeloSala.length > 0" [autoplay]="1500" [effect]="'fade'" [control]="true" [loop]="true" [zoom]="true">
+          <ion-slide col-12 no-margin no-padding *ngFor="let sala of modeloMuseo.arrayModeloSala">
             <ion-card no-margin no-padding class="obra">
-              <img class="img-resp" src="assets/imgs/banner.jpg" class="col-12" />
+              <img class="img-resp" src="{{sala.arrayStrImagen[0]}}" class="col-12" />
               <div class="card-text-cont">
-                <div class="card-title">Nombre sala</div>
+                <div class="card-title">{{sala.strNombre}}</div> 
               </div>
             </ion-card>
           </ion-slide>
-        
-          <ion-slide col-12 no-margin no-padding>
-            <ion-card no-margin no-padding class="obra">
-              <img class="img-resp" src="assets/imgs/banner-2.jpg" />
-              <div class="card-text-cont">
-                <div class="card-title">Nombre salara</div>
-              </div>
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide col-12 no-margin no-padding>
-              <ion-card no-margin no-padding class="obra">
-                <img class="img-resp" src="assets/imgs/banner.jpg" class="col-12" />
-                <div class="card-text-cont">
-                  <div class="card-title">Nombre sala</div>
-                </div>
-              </ion-card>
-            </ion-slide>
-          
-            <ion-slide col-12 no-margin no-padding>
-              <ion-card no-margin no-padding class="obra">
-                <img class="img-resp" src="assets/imgs/banner-2.jpg" />
-                <div class="card-text-cont">
-                  <div class="card-title">Nombre salara</div>
-                </div>
-              </ion-card>
-            </ion-slide>
         </ion-slides>
       </ion-row>
   </section>
@@ -115,31 +67,13 @@
   <section id="slider-destacadas">
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-      <ion-slides [autoplay]="1700" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
-        <ion-slide col-12 no-margin no-padding>
+      <ion-slides *ngIf="modeloMuseo.arrayModeloObra.length>0" [autoplay]="1700" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+        <ion-slide col-12 no-margin no-padding *ngFor="let obra of modeloMuseo.arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
-            <img class="img-resp" src="assets/imgs/obra-2.jpg" class="col-12" />
+            <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" class="col-12" />
             <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
-            </div>
-          </ion-card>
-        </ion-slide>
-        <ion-slide col-12 no-margin no-padding>
-          <ion-card col-12 no-margin no-padding class="obra">
-            <img class="img-resp" src="assets/imgs/obra-3.jpg" />
-            <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
-            </div>
-          </ion-card>
-        </ion-slide>
-        <ion-slide col-12 no-margin no-padding>
-          <ion-card col-12 no-margin no-padding class="obra">
-            <img class="img-resp" src="assets/imgs/obra.jpg" />
-            <div class="card-text-cont">
-              <div class="card-title">Obra</div>
-              <div class="card-subtitle">Autor</div>
+              <div class="card-title">{{obra.strTitulo}}</div>
+              <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>
             </div>
           </ion-card>
         </ion-slide>
