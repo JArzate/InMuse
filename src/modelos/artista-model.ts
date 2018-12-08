@@ -9,13 +9,13 @@
 // }).required();
 
 export class ArtistaModelo{
-    _id?:String;
-    strIdMuseo:String;
-    strNombre:String;
+    _id?:string;
+    strIdMuseo:string;
+    strNombre:string;
     dteNacimiento:Date = new Date();
-    arrayStrDatosCuriosos?:Array<String> = [''];
-    arrayStrImagen:Array<String> = new Array();
-    strAudioDescripcion?: String;
+    arrayStrDatosCuriosos?:Array<string> = [''];
+    arrayStrImagen:Array<string> = new Array();
+    strAudioDescripcion?: string;
     blnActivo: Boolean = true;;
     blnDestacadaMuseo:Boolean = false;
 

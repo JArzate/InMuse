@@ -6,8 +6,8 @@
 // }).required();
 
 export class MotivoModelo{
-    _id?: String;
-    strIdMuseo: String;
+    _id?: string;
+    strIdMuseo: string;
     arrayTmspVisita: Array<Date>;
     arrayModeloMotivoVisita: Array<MotivoModelo>
 

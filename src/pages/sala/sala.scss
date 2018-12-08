@@ -1,4 +1,8 @@
 page-sala {
+        ion-slide{
+            position: relative;
+            z-index:0;
+        }
         .cont-fabs{
             position: absolute;
             bottom: 5%;
@@ -7,6 +11,33 @@ page-sala {
             display: flex;
             justify-content: space-around;
     
+        }
+
+        #info-sala{
+            position: relative;
+            margin-bottom: 15%;
+            transition: all 2s linear;
+            ion-row{
+                margin-bottom:10%;
+            }
+    
+            a.btn{
+                margin: 0;
+                position: absolute;
+                bottom: -70px;
+                left: 50%;
+                transform: translate(-50%,0);
+            }
+    
+            &:not(.extended)::after{
+                content:'';
+                position: absolute;
+                width: 100%;
+                height: 50%;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(to bottom,transparent,#fff);
+            }
         }
     
         .fab{            

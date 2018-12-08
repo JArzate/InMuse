@@ -14,40 +14,12 @@
 
 <ion-content>
   <ion-row>
-    <ul>
-      <li style="background-image: url(assets/imgs/evento.jpg)">
+    <ul *ngIf="arrayModeloEvento.length > 0">
+      <li *ngFor="let evento of arrayModeloEvento" [ngStyle]="{'background-image':'url('+evento.arrayStrImagen[0]+')'}">
         <div>
-          <p class="dia">28</p>
-          <p>Nombre del evento</p>
-          <p class="fecha">12:00 P.M.</p>
-        </div>
-      </li>
-      <li style="background-image: url(assets/imgs/evento.jpg)">
-        <div>
-          <p class="dia">28</p>
-          <p>Nombre del evento</p>
-          <p class="fecha">12:00 P.M.</p>
-        </div>
-      </li>
-      <li style="background-image: url(assets/imgs/evento.jpg)">
-        <div>
-          <p class="dia">28</p>
-          <p>Nombre del evento</p>
-          <p class="fecha">12:00 P.M.</p>
-        </div>
-      </li>
-      <li style="background-image: url(assets/imgs/evento.jpg)">
-        <div>
-          <p class="dia">28</p>
-          <p>Nombre del evento</p>
-          <p class="fecha">12:00 P.M.</p>
-        </div>
-      </li>
-      <li style="background-image: url(assets/imgs/evento.jpg)">
-        <div>
-          <p class="dia">28</p>
-          <p>Nombre del evento</p>
-          <p class="fecha">12:00 P.M.</p>
+          <p class="dia">{{evento.dteCreacion | date:'d'}}</p>
+          <p>{{evento.strNombre}}</p>
+          <p class="fecha">{{evento.dteCreacion | date:'HH:mm'}}</p>
         </div>
       </li>
     </ul>

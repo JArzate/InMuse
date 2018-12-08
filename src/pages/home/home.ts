@@ -29,12 +29,12 @@ export class HomePage {
     private servicioEvento: EventoProvider,
     private alert:AlertController
   ) {
-
+    this.arrayModeloEventos = new Array<EventoModelo>();
   }
 
   ngOnInit(): void {
      //this.loadMap();
-     this.getEventosProximos();
+    this.getEventosProximos();
   }
 
   loadMap(){
@@ -83,8 +83,15 @@ export class HomePage {
   }
 
   getEventosProximos(){
-    this.servicioEvento.getEventosProximos().then(response=>{
-      console.log(response);
+    this.servicioEvento.getEventosProximos().then((response:any)=>{
+      if(response.intStatus == 1){
+        this.arrayModeloEventos = new Array<EventoModelo>();
+        this.arrayModeloEventos = response.jsnAnswer;
+        
+      }else{
+        
+      }
+      
     }).catch(err=>{
       this.alert.create({
         title:"Error",

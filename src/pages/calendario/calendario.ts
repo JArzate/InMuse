@@ -15,15 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarioPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarioPage');
   }
 
-  IrEventos = () => {
-    this.navCtrl.push(EventosPage);
+  IrEventos = (intMes) => {
+    console.log("Mes",intMes);
+    this.navCtrl.push(EventosPage,{'intMes':intMes});
   }
 
 }

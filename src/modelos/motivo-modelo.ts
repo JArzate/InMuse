@@ -5,9 +5,9 @@
 // }).required();
 
 export class MotivoModelo{
-    strOrigen: String;
+    strOrigen: string;
     intEdad: Number;
-    strMotivo: String;
+    strMotivo: string;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

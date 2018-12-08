@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { MuseoProvider } from '../../providers/museo/museo';
 import { MuseoModelo } from '../../modelos/museo-model';
-import { NativeAudio } from '@ionic-native/native-audio';
 import {Platform} from 'ionic-angular';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
+import { SalasPage } from '../salas/salas';
 
 /**
  * Generated class for the MuseoPage page.
@@ -22,7 +22,6 @@ export class MuseoPage {
   public leer_mas:boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public servicioMuseo: MuseoProvider,
-    private nativeAudio: NativeAudio,
     private alert:AlertController,
     private platform:Platform,
     private streamingMedia: StreamingMedia
@@ -45,6 +44,10 @@ export class MuseoPage {
       bgImage: this.modeloMuseo.arrayStrImagen[0]
     };
     this.streamingMedia.playAudio(this.modeloMuseo.strAudioDescripcion,options);
+  }
+
+  IrSalas = () => {
+    this.navCtrl.push(SalasPage,{'idMuseo':this.modeloMuseo._id});
   }
 
   getMuseo(){

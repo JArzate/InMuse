@@ -15,12 +15,12 @@ export class ObraProvider {
     console.log('Hello ObraProvider Provider');
   }
 
-  getObrasSala = (idSala:String) => {
-    return this.http.get(API_URL + "/obraSala/" + idSala,HTTPOptions).toPromise();
-  }
-
   getObra = (idObra:String) => {
     return this.http.get(API_URL + "/obra/" + idObra,HTTPOptions ).toPromise();
+  }
+
+  getObraRelacionada = (idSala:String,idObra:String) => {
+    return this.http.get(API_URL + "/obraRelacionada/"+ idSala+"/" + idObra,HTTPOptions ).toPromise();
   }
 
   

@@ -1,10 +1,10 @@
 export class EventoModelo{
-    _id?:String;
-    strIdMuseo:String;
-    strNombre:String;
-    strDescripcion:String;
+    _id?:string;
+    strIdMuseo:string;
+    strNombre:string;
+    strDescripcion:string;
     dteCreacion:Date = new Date();
-    arrayStrImagen:Array<String> = new Array();
+    arrayStrImagen:Array<string> = new Array();
     blnDestacadaMuseo:Boolean = false;
     blnActivo: Boolean = true;
         

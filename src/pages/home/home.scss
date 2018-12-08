@@ -28,6 +28,8 @@ ion-card.evento{
     img{
         min-height: 300px;
         object-fit: cover;
+        max-height: 300px;
+        width: 100%;
     }
 
     .card-text-cont{

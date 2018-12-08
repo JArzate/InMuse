@@ -5,8 +5,8 @@ import { ObraModelo } from "./obra-model";
 
 
 export class MuseoModelo{
-    _id?:String = "";
-    strNombre:String = "";
+    _id?:string = "";
+    strNombre:string = "";
     strDescripcion:string = "";
     strAudioDescripcion?:string = "";
     dteCreacion:Date = new Date();

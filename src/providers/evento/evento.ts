@@ -17,8 +17,8 @@ export class EventoProvider {
     console.log('Hello EventoProvider Provider');
   }
 
-  getEventosMes = (mes:String) => {
-    return this.http.get(API_URL + "/museolistaEventos/" + mes,HTTPOptions).toPromise();
+  getEventosMes = (mes:Number) => {
+    return this.http.get(API_URL + "/listaEventos/" + mes,HTTPOptions).toPromise();
   }
 
   getEventosProximos = () => {
