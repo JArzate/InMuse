@@ -1,0 +1,41 @@
+<ion-header >
+  <ion-toolbar color="secondary">
+    <!--<ion-buttons start>
+      <button ion-button icon-only color="light" (click)="pop()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>-->
+    <ion-title >Encuesta</ion-title> 
+    <ion-buttons end class="espacio-button">
+    </ion-buttons>
+  </ion-toolbar>
+  <div class="prof-pic">
+      <img src="{{modeloMuseo.arrayStrImagen[0]}}" alt="">
+  </div>
+</ion-header>
+
+<ion-content>
+    <div class="contenido">
+        <p class="slogan">¡Bienvenido al museo {{modeloMuseo.strNombre}}!</p>
+        <p class="parrafo" style="text-align:center;">Antes de comenzar, ayudanos a responder esta encuesta</p>
+        <!--<img src="assets/imgs/iconos/onda-individual.svg" class="ondas">-->
+        
+        <div *ngFor="let pregunta of preguntas" class="cont-pregunta">
+            <ion-item *ngIf="pregunta.strTipo == 'abierta'">
+                
+                <ion-label floating color="primary">{{pregunta.strPregunta}}</ion-label>
+                <ion-input [(ngModel)]="pregunta.strRespuesta" type="text" color="primary"></ion-input>
+            </ion-item>
+            <ion-row radio-group [(ngModel)]="pregunta.strRespuesta" *ngIf="pregunta.strTipo == 'opcional'">
+                {{pregunta.strPregunta}}
+              
+              <ion-item *ngFor="let opcion of pregunta.arrayStrOpciones">
+                <ion-label color="primary">{{opcion}}</ion-label>
+                <ion-radio value="{{opcion}}" ></ion-radio>
+              </ion-item>
+            </ion-row>
+        </div>
+        <button ion-button color="danger" style="margin-bottom:30px;" (click)="continuar()">CONTINUAR</button>
+          
+   </div>
+</ion-content>

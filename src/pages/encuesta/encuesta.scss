@@ -1,0 +1,112 @@
+page-encuesta {
+    ion-header{
+        height: 110px;
+        position: relative;
+    }
+    .scroll-content{
+        margin-top: 110px!important;
+    }
+
+    .toolbar-title-md {
+        padding: 0 12px;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .prof-pic {
+        position: absolute;
+        width: 144px;
+        z-index: 20;
+        top: 50%;
+        right: 0;
+        transform: translate(0,0%);
+        img {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            -o-object-fit: cover;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .cont-pregunta{
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 30px;
+        border: 1px dashed rgba(177, 177, 177, 0.575);
+    }
+
+    .item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 0;
+    }
+
+    .contenido {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 auto;
+        padding-top: 50px;
+        .slogan {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Fira sans';
+            font-weight: 700;
+            margin: 15px 0 0;
+            color: #06465d;
+        }
+        .ondas {
+            width: 100px;
+            margin: 15px 0 20px;
+        }
+        form {
+            width: 85%;
+            margin: 0 auto;
+            .list-ios>.item-block:first-child {
+                border-top: none;
+                margin: 0 0 20px;
+            }
+            ion-label {
+                font-size: 0.9em;
+                font-family: 'Poppins';
+                font-weight: 700;
+                margin: 0;
+            }
+            ion-list {
+                margin-bottom: 0;
+                ion-item.item {
+                    padding: 0;
+                    min-height: inherit;
+                    margin: 0;
+                    .text-input {
+                        color: #505050;
+                        font-weight: 300;
+                        font-family: Roboto;
+                        font-size: 1em;
+                        margin: 0;
+                        border-color: #004F57;
+                    }
+                }
+            }
+            .button {
+                margin: 15px 0 10px;
+                padding: 1.25em 20px;
+                width: 100%;
+                font-size: 1.1em;
+                font-family: 'Poppins';
+                font-weight: 700;
+            }
+        }
+        .txtbtn {
+            font-weight: 700;
+            font-family: 'Poppins';
+            text-decoration: underline;
+            background-color: rgba(255, 255, 255, 0)!important;
+            font-size: 1em;
+        }
+    }
+}

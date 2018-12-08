@@ -19,31 +19,22 @@
       <p class="title-obra">Cuentanos tu experiencia con esta obra</p>
     </ion-row>
     <div class="str-rtn">
-    <rating [(ngModel)]="avg" 
-        readOnly="false"
-        max="5" 
-        emptyStarIconName="star-outline" 
-        halfStarIconName="star-half" 
-        starIconName="star" 
-        nullable="false"
-        (ngModelChange)="onModelChange($event)">
-    </rating>
     </div>
-    <p>
-      Lorem Ipsum is simply dummy text of the printing 
-      and typesetting industry. Lorem Ipsum has been the industry's 
-      standard dummy text ever since the 1500s, when an unknown printer 
-      took a galley of type and scrambled it to make a type specimen book. 
-      It has survived not only five centuries, but also the leap into electronic typesetting, 
-      remaining essentially unchanged. It was popularised in the 1960s with the release 
-      of Letraset sheets containing Lorem Ipsum passages, and more recently 
-      with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </p>
+   
 
+    <div class="cont-pregunta">
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='encantado'}" (click)="iconSelected='encantado'"><img src="../../assets/imgs/5.jpg" /></div>
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='feliz'}" (click)="iconSelected='feliz'"><img src="../../assets/imgs/1.jpg" /></div>
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='sorprendido'}" (click)="iconSelected='sorprendido'"><img src="../../assets/imgs/3.jpg" /></div>
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='indiferente'}" (click)="iconSelected='indiferente'"><img src="../../assets/imgs/4.jpg" /></div>
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='triste'}" (click)="iconSelected='triste'"><img src="../../assets/imgs/6.jpg" /></div>
+        <div class="radioIcon" [ngClass]="{'selected':iconSelected=='enojado'}" (click)="iconSelected='enojado'"><img src="../../assets/imgs/7.jpg" /></div>
+  </div>
+    <p class="emocion">{{iconSelected}}</p>
     <ion-item>
       <ion-textarea placeholder="Dejanos un comentario sobre esta obra..." [(ngModel)]="comment"></ion-textarea>
     </ion-item>
-      <button ion-button round (click)="sendComment()">Enviar</button>
+      <button class="btn" ion-button round (click)="sendComment()">Enviar</button>
   </section>
 
 </ion-content>

@@ -15,10 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FeedbackPage {
   avg: number;
+  iconSelected: string = '';
   comment: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.avg =0;
     this.comment = "";
+    /*var width = document.getElementsByClassName('radioIcon')[0].clientWidth;
+    for (let index = 0; index < iconos.length; index++) {
+      iconos[index]. = iconos[index].clientWidth;
+      
+    }*/
   }
 
   ionViewDidLoad() {

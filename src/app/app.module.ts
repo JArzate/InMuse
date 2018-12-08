@@ -17,6 +17,7 @@ import { MyApp } from './app.component';
 /*PAGES*/
 import { HomePage } from '../pages/home/home';
 import { SalaPage } from './../pages/sala/sala';
+import { EncuestaPage } from './../pages/encuesta/encuesta';
 import { ObraPage } from './../pages/obra/obra';
 import { MuseoProvider } from '../providers/museo/museo';
 import { EventoProvider } from '../providers/evento/evento';
@@ -25,7 +26,7 @@ import { ObraProvider } from '../providers/obra/obra';
 import { ArtistaProvider } from '../providers/artista/artista';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
-//import { FeedbackPage } from '../pages/feedback/feedback';
+import { FeedbackPage } from '../pages/feedback/feedback';
 import { ElasticHeader } from '../directives/elastic-header/elastic-header';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
@@ -35,10 +36,11 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     HomePage,
     ObraPage,
     SalaPage,
-    //FeedbackPage,
+    FeedbackPage,
     ElasticHeader,
     CalendarioPage,
     MuseoPage,
+    EncuestaPage,
     EventosPage
   ],
   imports: [
@@ -53,8 +55,9 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     HomePage,
     ObraPage,
     SalaPage,
-    //FeedbackPage,
+    FeedbackPage,
     CalendarioPage,
+    EncuestaPage,
     MuseoPage,
     EventosPage
   ],

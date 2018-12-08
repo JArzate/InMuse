@@ -4,10 +4,10 @@
 // }).required();
 
 export class PreguntaModelo{
-    strPregunta:String = "";
-    strRespuesta:String = "";
-    strTipo:String = "";
-    arrayStrOpciones?:Array<String> = new Array();;
+    strPregunta:string = "";
+    strRespuesta:string = "";
+    strTipo:string = "";
+    arrayStrOpciones?:Array<string> = new Array();;
     constructor(values: Object = {}) {
         Object.assign(this, values);
     }
