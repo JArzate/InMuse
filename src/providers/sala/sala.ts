@@ -20,7 +20,7 @@ export class SalaProvider {
   }
 
   getSalas = ( idMuseo:String) => {
-    return this.http.get(API_URL + "/sala/" + idMuseo,HTTPOptions ).toPromise();
+    return this.http.get(API_URL + "/listaSalas/" + idMuseo,HTTPOptions ).toPromise();
   }
 
 }

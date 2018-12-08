@@ -17,8 +17,9 @@ import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-m
 })
 export class SalaPage {
   public appear = false;
-  modeloSala:SalaModelo;
+  public modeloSala:SalaModelo;
   public leer_mas:boolean = false;
+  public idSala: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -32,6 +33,7 @@ export class SalaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SalaPage');
+    this.idSala = this.navParams.get('idSala');
     this.getSala();
   }
 
@@ -52,7 +54,7 @@ export class SalaPage {
   }
 
   getSala(){
-    this.servicioSala.getSala("5bfa3edad70db0138e4f693b").then((response:any)=>{
+    this.servicioSala.getSala(this.idSala).then((response:any)=>{
       if(response.intStatus == 1){
         this.modeloSala = new SalaModelo(response.jsnAnswer);
         console.log(this.modeloSala);
