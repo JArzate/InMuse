@@ -49,7 +49,7 @@ export class LoginPage {
   submit = () => {
     this.usuarioProvider.logIn(this.correo,this.password).then((response:any)=>{
       if (response.intStatus == 1){
-        this.storage.set('usuario',JSON.stringify(response.jsnAnswer)).then(()=>{
+        this.storage.set('usuario',response.jsnAnswer).then(()=>{
           this.navCtrl.push(HomePage);
         });
       }else{

@@ -54,7 +54,7 @@ import { RegistroPage } from '../pages/registro/registro';
     EncuestaPage,
     EventosPage,
     RecorridosPage,
-    AcertijoPage
+    AcertijoPage,
     EventoPage,
     LoginPage,
     RegistroPage,
@@ -85,7 +85,7 @@ import { RegistroPage } from '../pages/registro/registro';
     MuseoPage,
     EventosPage,
     RecorridosPage,
-    AcertijoPage
+    AcertijoPage,
     EventoPage,
     LoginPage,
     RegistroPage,

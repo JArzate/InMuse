@@ -21,7 +21,7 @@
         <ion-card-content class='parrafo'>
           <div class='contenedor-pista-progreso' *ngIf='recorrido.strEstatus == "progreso"'>
             <div class='contenedor-progreso'>
-              <div class='barra-progreso' [ngStyle]='{"width":(recorrido.intPistaActual*100/recorrido.intPistaTotal)+"%"}'><p>{{(recorrido.intPistaActual+1/recorrido.intPistaTotal)  | percent }}</p></div>
+              <div class='barra-progreso' [ngStyle]='{"width":((recorrido.intPistaActual+1)*100/recorrido.intPistaTotal)+"%"}'><p>{{((recorrido.intPistaActual+1)/recorrido.intPistaTotal)  | percent }}</p></div>
             </div>
             <div class='contenedor-pistas'>
               <p class='titulo-pista'>{{recorrido.intPistaActual+1}} <span class="titulo-pista-pequeno">/{{recorrido.intPistaTotal}}</span></p>

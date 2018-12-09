@@ -26,6 +26,8 @@ export class AcertijoPage {
   qrData = null;
   createdCode = null;
   scannedCode = null;
+  strIdRecorrido:string;
+  strIdUsuario:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private barcodeScanner: BarcodeScanner,
@@ -38,11 +40,16 @@ export class AcertijoPage {
   }
 
   ionViewDidLoad() {
+
+    this.strIdRecorrido = this.navParams.get('idRecorrido');
+    this.strIdUsuario = this.navParams.get('idUsuario');
+
+
     this.getRecorrido();
   }
 
   getRecorrido(){
-    this.recorridoProvider.getRecorrido('5c00954426b5537567dedcd6','5bf75c0ad51ec707a8ea9d88').then((response:any) =>{
+    this.recorridoProvider.getRecorrido(this.strIdRecorrido,this.strIdUsuario).then((response:any) =>{
       this.recorrido = new RecorridoModelo(response.jsnAnswer);
       this.pista = new PistaModelo(this.recorrido.arrayModeloPista[this.recorrido.intPistaActual]);
       console.log(this.recorrido);
@@ -73,7 +80,7 @@ export class AcertijoPage {
           title:"¡Bien!",
           message: 'Cada vez eres más astuto, felicidades.'
         }).present();
-        this.recorridoProvider.actualizaRecorrido('5c00954426b5537567dedcd6','5bf75c0ad51ec707a8ea9d88',this.recorrido.intPistaActual+1).then((response:any) =>{
+        this.recorridoProvider.actualizaRecorrido(this.strIdRecorrido,this.strIdUsuario,this.recorrido.intPistaActual+1).then((response:any) =>{
           if(response.intStatus==1){
             console.log('Entro 1');
             this.getRecorrido();

@@ -5,6 +5,7 @@ import { ObraModelo } from '../../modelos/obra-model';
 import { ObraProvider } from '../../providers/obra/obra';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
 import { ArtistaModelo } from '../../modelos/artista-model';
+import { RecorridosPage } from '../recorridos/recorridos';
 
 /**
  * Generated class for the ObraPage page.
@@ -102,6 +103,10 @@ export class ObraPage {
   irArtista = (artista:ArtistaModelo) => {
     console.log(artista);
     this.navCtrl.push(ArtistaPage,{idArtista:artista._id});
+  }
+
+  IrRecorridos = () => {
+    this.navCtrl.push(RecorridosPage,{idMuseo:this.modeloObra.strIdMuseo});
   }
 
 }

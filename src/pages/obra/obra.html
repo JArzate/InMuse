@@ -10,7 +10,6 @@
   <section id="obra">
     <ion-slides *ngIf="modeloObra.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
         [zoom]="true">
-        
         <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloObra.arrayStrImagen">
             <img [src]="image" class="img-resp">
         </ion-slide>
@@ -24,7 +23,7 @@
     <div class="audio-fab fab">
       <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
     </div>
-    <div class="feedback-fab fab">
+    <div class="feedback-fab fab" (click)="IrRecorridos()">
       <i class="fa fa-puzzle-piece"></i>
     </div>
   </div>
