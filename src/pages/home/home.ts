@@ -15,6 +15,9 @@ import {
 } from '@ionic-native/google-maps';
 import { EventoProvider } from '../../providers/evento/evento';
 import { EventoPage } from '../evento/evento';
+import { MuseosPage } from '../museos/museos';
+import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -24,19 +27,25 @@ import { EventoPage } from '../evento/evento';
 export class HomePage {
    map: GoogleMap;
    arrayModeloEventos:Array<EventoModelo>;
-   user:UsuarioModelo;
+   user:UsuarioModelo = new UsuarioModelo();
 
   constructor(
     public navCtrl: NavController,
     private googleMaps: GoogleMaps,
     private servicioEvento: EventoProvider,
-    private alert:AlertController
+    private alert:AlertController,
+    public storage:Storage
   ) {
+    if (this.storage.get('usuario')){
+      this.storage.get('usuario').then((usuario:any)=>{
+        this.user = new UsuarioModelo(usuario);
+      });
+    }
     this.arrayModeloEventos = new Array<EventoModelo>();
   }
 
   ngOnInit(): void {
-     this.loadMap();    
+    this.loadMap();    
     this.getEventosProximos();
 
   }
@@ -45,8 +54,8 @@ export class HomePage {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
-          lat: 43.0741904, 
-          lng: -89.3809802 
+          lat: 21.8847689, 
+          lng: -102.2879364
         },
         zoom: 18,
         tilt: 30
@@ -77,12 +86,15 @@ export class HomePage {
     this.navCtrl.push(CalendarioPage);
   }
 
+  IrMuseos = () => {
+    this.navCtrl.push(MuseosPage);
+  }
+
   getEventosProximos(){
     this.servicioEvento.getEventosProximos().then((response:any)=>{
       if(response.intStatus == 1){
         this.arrayModeloEventos = new Array<EventoModelo>();
         this.arrayModeloEventos = response.jsnAnswer;
-        
       }else{
         
       }
@@ -97,6 +109,16 @@ export class HomePage {
 
   irEvento = (evento:EventoModelo) => {
     this.navCtrl.push(EventoPage,{idEvento:evento._id});
+  }
+
+  irLoginPage = () => {
+    this.navCtrl.push(LoginPage,{'blnMuseo':false});
+  }
+
+  logOut = () =>{
+    this.storage.remove('usuario').then(()=>{
+      this.user = null;
+    });
   }
 
   

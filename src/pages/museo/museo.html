@@ -1,8 +1,49 @@
+<ion-menu [content]="content" [swipeEnabled]="true">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Usuario</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <ion-item (click)="irLoginPage()" menuClose *ngIf="user._id.length == 0" >
+                <ion-label>
+                    Iniciar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-in"></ion-icon>
+            </ion-item>
+
+            <ion-item menuClose (click)="irRecorridos()" *ngIf="modeloMuseo._id.length > 0">
+                <ion-label>
+                    Mis recorridos
+                </ion-label>
+                <ion-icon item-end name="game-controller-a"></ion-icon>
+            </ion-item>
+            
+            <ion-item  menuClose (click)="logOut()" *ngIf="user._id.length > 0">
+                <ion-label>
+                    Cerrar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-out"></ion-icon>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+
+
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      {{modeloMuseo.strNombre}}
-    </ion-title>
+      <ion-row justify-content-between>
+          <ion-icon name="menu" color="light" menuToggle></ion-icon>
+          <ion-title>
+              {{modeloMuseo.strNombre}}
+            </ion-title>
+      </ion-row>
+    
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +57,7 @@
     </div>
 
     <div class="cont-fabs">
-      <div class="info-fab fab">
+      <div class="info-fab fab" (click)="IrFeedback()">
         <i class="fa fa-star"></i>
       </div>
       <div class="audio-fab fab">
@@ -71,7 +112,7 @@
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
       <ion-slides *ngIf="modeloMuseo.arrayModeloObra.length>0" [autoplay]="1700" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
-        <ion-slide col-12 no-margin no-padding *ngFor="let obra of modeloMuseo.arrayModeloObra">
+        <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of modeloMuseo.arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
             <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" />
             <div class="card-text-cont">

@@ -4,6 +4,7 @@ import { EventoPage } from './../pages/evento/evento';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { EventosPage } from './../pages/eventos/eventos';
 import { MuseoPage } from './../pages/museo/museo';
+import { MuseosPage } from './../pages/museos/museos';
 import { CalendarioPage } from './../pages/calendario/calendario';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -51,6 +52,7 @@ import { RegistroPage } from '../pages/registro/registro';
     //FeedbackPage,
     CalendarioPage,
     MuseoPage,
+    MuseosPage,
     EncuestaPage,
     EventosPage,
     RecorridosPage,
@@ -83,6 +85,7 @@ import { RegistroPage } from '../pages/registro/registro';
     CalendarioPage,
     EncuestaPage,
     MuseoPage,
+    MuseosPage,
     EventosPage,
     RecorridosPage,
     AcertijoPage,

@@ -44,7 +44,7 @@ export class RegistroPage {
           title:"Acción realizada",
           message:"Usuario creado exitosamente"
         }).present().then(()=>{
-          this.navCtrl.push(HomePage);
+          this.navCtrl.setRoot(HomePage);
         });
       }
     }).catch((error)=>{

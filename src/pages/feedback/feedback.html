@@ -9,14 +9,14 @@
 <ion-content elastic-header>
   <section id="obra">
     <div class="img-cont">
-      <img src="assets/imgs/obra-2.jpg" alt="" class="img-resp">
-      <h1 class="parrafo">LA NIÑA PINTADA</h1>
+      <img src="{{strImagen}}" alt="" class="img-resp">
+      <h1 class="parrafo">{{strTitulo}}</h1>
     </div>
   </section>
 
   <section id="info-obra" class="main-content">
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-      <p class="title-obra">Cuentanos tu experiencia con esta obra</p>
+      <p class="title-obra">Cuentanos tu experiencia con {{strColeccion == 'museo' ? ' este ' : ' esta '}} {{strColeccion}}</p>
     </ion-row>
     <div class="str-rtn">
     <!-- <rating [(ngModel)]="avg" 

@@ -9,7 +9,7 @@
 // }).required();
 
 export class UsuarioModelo{
-    _id:string;
+    _id:string = "";
     strNombre:string = "";
     strApellido?:string = "";
     strCorreo:string = "";

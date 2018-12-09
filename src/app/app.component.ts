@@ -9,14 +9,14 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { timer } from 'rxjs/observable/timer';
+import { RecorridosPage } from '../pages/recorridos/recorridos';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp { 
-  @ViewChild(Nav) navCtrl: Nav;
-  rootPage:any = MuseoPage;
-  user:UsuarioModelo;
+  
+  rootPage:any = HomePage;
   
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public storage:Storage) {
     platform.ready().then(() => {
@@ -28,23 +28,8 @@ export class MyApp {
         splashScreen.hide();
       });
 
-      if (this.storage.get('usuario')){
-        this.storage.get('usuario').then((usuario:any)=>{
-          this.user = new UsuarioModelo(usuario);
-        });
-      }
-
     });
   }
 
-  irLoginPage = () => {
-    this.navCtrl.push(LoginPage);
-  }
-
-  logOut = () =>{
-    this.storage.remove('usuario').then(()=>{
-      this.user = null;
-    });
-  }
 }
 

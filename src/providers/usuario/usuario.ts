@@ -27,7 +27,13 @@ export class UsuarioProvider {
   }
 
   register = (usuario:UsuarioModelo) => {
-    return this.http.post(API_URL + "/usuarioRegistro",{modeloUsuario:usuario}).toPromise();
+    let usuarioRegistro={
+        strNombre: usuario.strNombre,
+        strApellido: usuario.strApellido,
+        strCorreo: usuario.strCorreo,
+        strPassword: usuario.strPassword
+    }
+    return this.http.post(API_URL + "/registro",usuarioRegistro).toPromise();
   }
   
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { MuseoProvider } from '../../providers/museo/museo';
 
 /**
@@ -17,11 +17,25 @@ export class FeedbackPage {
   avg: number;
   iconSelected: string = '';
   comment: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public museoProvider: MuseoProvider,private alert:AlertController) {
-    this.avg =0;
-    this.comment = "";
-    
+  idMuseo:string;
+  idColeccion:string;
+  strColeccion:string;
+  strImagen:string;
+  strTitulo: string;
+  private loader:any;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public museoProvider: MuseoProvider,
+    private alert:AlertController,
+    private loadingCtrl:LoadingController) {
+      this.avg =0;
+      this.comment = "";
+      this.idMuseo = this.navParams.get('idMuseo');
+      this.idColeccion = this.navParams.get('idColeccion');
+      this.strColeccion = this.navParams.get('strColeccion');
+      this.strImagen = this.navParams.get('strImagen');
+      this.strTitulo = this.navParams.get('strTitulo');
   }
 
   ionViewDidLoad() {
@@ -34,8 +48,27 @@ export class FeedbackPage {
 
   sendComment(){
     console.log(this.comment);
-    this.museoProvider.setFeedback('5bfa3b92157fa1127215cb9f','5bfa3b92157fa1127215cb9f','museo',this.comment,this.iconSelected).then((response:any) =>{
-
+    this.loader = this.loadingCtrl.create({content:"Cargando"});
+    this.loader.present();
+    this.museoProvider.setFeedback(this.idMuseo,this.idColeccion,this.strColeccion,this.comment,this.iconSelected).then((response:any) =>{
+      this.loader.dismiss();
+      if(response.intStatus == 1){
+        this.alert.create({
+          title: 'Gracias',
+          message: 'Tus comentarios nos ayudan mucho :D',
+          enableBackdropDismiss: false,
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                this.navCtrl.pop();
+              }
+            }
+          ]
+        }).present();
+      }else{
+        this.alert.create({title:"Error",message:response.strAnswer}).present();
+      }
     }).catch(err=>{
       this.alert.create({
         title:"Error",

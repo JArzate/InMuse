@@ -5,6 +5,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MuseoPage } from '../museo/museo';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,6 +23,7 @@ export class LoginPage {
   correo:string;
   password:string;
   form:FormGroup;
+  blnMuseo: boolean = false;
   constructor(
     public alertCtrl:AlertController,
     public navCtrl: NavController, 
@@ -29,6 +31,7 @@ export class LoginPage {
     public usuarioProvider:UsuarioProvider,
     public formBuilder:FormBuilder,
     public storage:Storage) {
+      this.blnMuseo = this.navParams.get('blnMuseo');
       this.correo = '';
       this.password = '';
       this.form = this.formBuilder.group({
@@ -50,7 +53,11 @@ export class LoginPage {
     this.usuarioProvider.logIn(this.correo,this.password).then((response:any)=>{
       if (response.intStatus == 1){
         this.storage.set('usuario',response.jsnAnswer).then(()=>{
-          this.navCtrl.push(HomePage);
+          if(this.blnMuseo){
+            this.navCtrl.setRoot(MuseoPage);
+          }else{
+            this.navCtrl.setRoot(HomePage);
+          }
         });
       }else{
         this.alertCtrl.create({

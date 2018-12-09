@@ -20,6 +20,10 @@ export class MuseoProvider {
     return this.http.get(API_URL + "/museo/" + idMuseo ,HTTPOptions).toPromise();
   }
 
+  getMuseos = () => {
+    return this.http.get(API_URL + "/listaMuseo" ,HTTPOptions).toPromise();
+  }
+
   getEncuesta = (idMuseo:string) =>{
     return this.http.get(API_URL + "/encuesta/" + idMuseo ,HTTPOptions).toPromise();
   }

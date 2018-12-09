@@ -1,3 +1,45 @@
+<ion-menu [content]="content" [swipeEnabled]="true">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Usuario</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <ion-item (click)="irLoginPage()" menuClose *ngIf="user._id.length == 0" >
+                <ion-label>
+                    Iniciar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-in"></ion-icon>
+            </ion-item>
+
+            <ion-item *ngIf="user._id.length > 0" >
+                <ion-label text-center>
+                    {{user.strNombre}}
+                </ion-label>
+            </ion-item>            
+
+            <!--<ion-item menuClose (click)="irRecorridos()" *ngIf="user._id.length > 0">
+                <ion-label>
+                    Mis recorridos
+                </ion-label>
+                <ion-icon item-end name="game-controller-a"></ion-icon>
+            </ion-item> -->
+            
+            <ion-item  menuClose (click)="logOut()" *ngIf="user._id.length > 0">
+                <ion-label>
+                    Cerrar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-out"></ion-icon>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+
 <ion-header>
     <ion-navbar color="primary">
         <ion-row justify-content-between>
@@ -9,6 +51,12 @@
 
 <ion-content color="gray">
     <div id="map"></div>
+
+    <div>
+        <ion-row justify-content-center>
+            <a href="#" class="btn" (click)="IrMuseos()">Ver Museos</a>
+        </ion-row>
+    </div>
     <section id="calendario">
         <ion-row justify-content-center>
             <p class="title-section">Próximos eventos</p>

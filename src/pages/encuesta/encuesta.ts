@@ -21,6 +21,7 @@ export class EncuestaPage {
   preguntas: Array<PreguntaModelo>;
   modeloPregunta: PreguntaModelo;
   form: FormGroup;
+  idMuseo:string;
   constructor(public navCtrl: NavController,
     public servicioMuseo: MuseoProvider, 
     private alert:AlertController,
@@ -28,6 +29,7 @@ export class EncuestaPage {
     public navParams: NavParams) {
       this.modeloMuseo = new MuseoModelo();
       this.preguntas = new Array<PreguntaModelo>();
+      this.idMuseo = this.navParams.get('idMuseo');
   }
 
   ionViewDidLoad() {
@@ -36,7 +38,7 @@ export class EncuestaPage {
   }
 
   getMuseo(){
-    this.servicioMuseo.getMuseo('5bfa3b92157fa1127215cb9f').then((response:any) =>{
+    this.servicioMuseo.getMuseo(this.idMuseo).then((response:any) =>{
       this.modeloMuseo = new MuseoModelo(response.jsnAnswer);
       
      
@@ -50,8 +52,24 @@ export class EncuestaPage {
 
   continuar(){
     console.log("Respuestas",this.preguntas);
-    this.servicioMuseo.setEncuesta('5bfa3b92157fa1127215cb9f','5bfa3b92157fa1127215cb9f','museo',this.preguntas).then((response:any) =>{
-
+    this.servicioMuseo.setEncuesta(this.idMuseo,this.idMuseo,'museo',this.preguntas).then((response:any) =>{
+        if(response.intStatus == 1){
+          this.alert.create({
+            title: 'Gracias',
+            message: 'Tus respuestas nos sirven mucho :)',
+            enableBackdropDismiss: false,
+            buttons: [
+              {
+                text: 'Ok',
+                handler: () => {
+                  this.navCtrl.pop();
+                }
+              }
+            ]
+          }).present();
+        }else{
+          this.alert.create({title:"Error",message:response.strAnswer}).present();
+        }
     }).catch(err=>{
       this.alert.create({
         title:"Error",
@@ -61,7 +79,7 @@ export class EncuestaPage {
   }
 
   getEncuesta(){
-    this.servicioMuseo.getEncuesta('5bfa3b92157fa1127215cb9f').then((response:any) =>{
+    this.servicioMuseo.getEncuesta(this.idMuseo).then((response:any) =>{
       //this.preguntas = response.jsnAnswer;
       console.log('Encuesta: ',this.preguntas);
       response.jsnAnswer.forEach(element => {

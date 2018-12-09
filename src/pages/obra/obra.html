@@ -17,7 +17,7 @@
   </section>
 
   <div class="cont-fabs">
-    <div class="info-fab fab">
+    <div class="info-fab fab" (click)="IrFeedback()">
       <i class="fa fa-star"></i>
     </div>
     <div class="audio-fab fab">
@@ -57,7 +57,7 @@
     <ion-row *ngIf="arrayModeloObra.length > 0">
       <p class="title-section">Obras relacionadas</p>
       <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
-        <ion-slide col-12 no-margin no-padding *ngFor="let obra of arrayModeloObra">
+        <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
             <img [src]="obra.arrayStrImagen[0]" class="col-12" />
             <div class="card-text-cont">
