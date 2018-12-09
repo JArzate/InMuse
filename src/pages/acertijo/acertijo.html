@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        {{recorrido.strNombre}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <div class="completo" *ngIf="recorrido.strEstatus == 'completado'">
+      <img src="../../assets/imgs/medalla.png" />
+      <h2>¡FELICIDADES!</h2>
+      <h3>HAZ FINALIZADO ESTE RECORRIDO EXITOSAMENTE, SHERLOCK HOLMES ESTARÍA ORGULLOSO DE TI</h3>
+    </div>
+    <div *ngIf="recorrido.strEstatus != 'completado'" class="cont-acertijo" [ngStyle]="{'background-image':'url('+pista.strImagen+')'}">
+      <div class="capa">
+      <div class="acertijo" [ngClass]="{'facil':facil==true}">
+        <p>{{pista.strPista}}</p>
+      </div>
+      </div>
+    </div>
+    <ion-item *ngIf="recorrido.strEstatus != 'completado'" (click)="verImagen()">
+        <ion-label (click)="verImagen()">Dificultad Fácil</ion-label>
+        <ion-checkbox (click)="verImagen()" color="primary"></ion-checkbox>
+      </ion-item>
+  
+      <button *ngIf="recorrido.strEstatus != 'completado'" class="btn" ion-button round (click)="escanear()">Escanear QR</button>
+  </ion-content>
+  

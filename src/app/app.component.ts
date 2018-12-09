@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { timer } from 'rxjs/observable/timer';
 import { EncuestaPage } from '../pages/encuesta/encuesta';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { AcertijoPage } from '../pages/acertijo/acertijo';
 
 @Component({
   templateUrl: 'app.html'

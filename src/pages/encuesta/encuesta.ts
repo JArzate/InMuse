@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import {  NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MuseoModelo } from '../../modelos/museo-model';
 import { MuseoProvider } from '../../providers/museo/museo';
@@ -12,7 +12,6 @@ import { PreguntaModelo } from '../../modelos/pregunta-model';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-encuesta',
   templateUrl: 'encuesta.html',
@@ -51,6 +50,14 @@ export class EncuestaPage {
 
   continuar(){
     console.log("Respuestas",this.preguntas);
+    this.servicioMuseo.setEncuesta('5bfa3b92157fa1127215cb9f','5bfa3b92157fa1127215cb9f','museo',this.preguntas).then((response:any) =>{
+
+    }).catch(err=>{
+      this.alert.create({
+        title:"Error",
+        message: JSON.stringify(err)
+      }).present();
+    });
   }
 
   getEncuesta(){

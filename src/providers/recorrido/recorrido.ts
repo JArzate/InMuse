@@ -23,4 +23,8 @@ export class RecorridoProvider {
     return this.http.get(API_URL + "/recorrido/" + idRecorrido + "/" + idUsuario,HTTPOptions ).toPromise();
   }
 
+  actualizaRecorrido = ( idRecorrido:string, idUsuario:string, intPistaActual:number) =>{
+    return this.http.put(API_URL + "/recorrido/" , {'idRecorrido':idRecorrido, 'idUsuario':idUsuario, 'intPistaActual':intPistaActual},HTTPOptions ).toPromise();
+  }
+
 }
