@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Bienvenido
+      {{modeloMuseo.strNombre}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -48,11 +48,11 @@
       
   </section>
 
-  <section id="colecciones">
-      <p class="title-section">Colecciones en exposición</p>
+  <section id="colecciones" *ngIf="modeloMuseo.arrayModeloSala.length > 0" >
+      <p class="title-section">Colecciones destacadas</p>
       <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-        <ion-slides *ngIf="modeloMuseo.arrayModeloSala.length > 0" [autoplay]="1500" [effect]="'fade'" [control]="true" [loop]="true" [zoom]="true">
-          <ion-slide col-12 no-margin no-padding *ngFor="let sala of modeloMuseo.arrayModeloSala">
+        <ion-slides *ngIf="modeloMuseo.arrayModeloSala.length > 0" [autoplay]="1500" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+          <ion-slide col-12 no-margin no-padding *ngFor="let sala of modeloMuseo.arrayModeloSala" (click)="irSala(sala)">
             <ion-card no-margin no-padding class="obra">
               <img class="img-resp" src="{{sala.arrayStrImagen[0]}}" class="col-12" />
               <div class="card-text-cont">
@@ -67,13 +67,13 @@
       </ion-row>
   </section>
 
-  <section id="slider-destacadas">
+  <section id="slider-destacadas" *ngIf="modeloMuseo.arrayModeloObra.length > 0" >
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
       <ion-slides *ngIf="modeloMuseo.arrayModeloObra.length>0" [autoplay]="1700" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let obra of modeloMuseo.arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
-            <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" class="col-12" />
+            <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" />
             <div class="card-text-cont">
               <div class="card-title">{{obra.strTitulo}}</div>
               <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>

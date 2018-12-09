@@ -1,33 +1,49 @@
-import { HomePage } from './../pages/home/home';
-import { EventosPage } from './../pages/eventos/eventos';
-import { MuseoPage } from './../pages/museo/museo';
-import { CalendarioPage } from './../pages/calendario/calendario';
 import { ObraPage } from './../pages/obra/obra';
-import { SalaPage } from './../pages/sala/sala';
-import {RecorridosPage} from './../pages/recorridos/recorridos';
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { UsuarioModelo } from './../modelos/usuario-model';
+import { Storage } from '@ionic/storage';
+import { MuseoPage } from './../pages/museo/museo';
+import { LoginPage } from './../pages/login/login';
+import { HomePage } from './../pages/home/home';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { timer } from 'rxjs/observable/timer';
-import { EncuestaPage } from '../pages/encuesta/encuesta';
-import { FeedbackPage } from '../pages/feedback/feedback';
-import { AcertijoPage } from '../pages/acertijo/acertijo';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp { 
+  @ViewChild(Nav) navCtrl: Nav;
   rootPage:any = MuseoPage;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  user:UsuarioModelo;
+  
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public storage:Storage) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      timer(500).subscribe(()=>{
+      
+      timer(1000).subscribe(()=>{        
         splashScreen.hide();
       });
+
+      if (this.storage.get('usuario')){
+        this.storage.get('usuario').then((usuario:any)=>{
+          this.user = new UsuarioModelo(usuario);
+        });
+      }
+
+    });
+  }
+
+  irLoginPage = () => {
+    this.navCtrl.push(LoginPage);
+  }
+
+  logOut = () =>{
+    this.storage.remove('usuario').then(()=>{
+      this.user = null;
     });
   }
 }

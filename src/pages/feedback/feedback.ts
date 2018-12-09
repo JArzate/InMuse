@@ -9,7 +9,6 @@ import { MuseoProvider } from '../../providers/museo/museo';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-feedback',
   templateUrl: 'feedback.html',

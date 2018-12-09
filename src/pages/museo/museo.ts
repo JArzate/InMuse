@@ -1,5 +1,7 @@
+import { SalaPage } from './../sala/sala';
+import { SalaModelo } from './../../modelos/sala-model';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { MuseoProvider } from '../../providers/museo/museo';
 import { MuseoModelo } from '../../modelos/museo-model';
 import {Platform} from 'ionic-angular';
@@ -23,13 +25,12 @@ export class MuseoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public servicioMuseo: MuseoProvider,
     private alert:AlertController,
+    private loadingCtrl:LoadingController,
     private platform:Platform,
     private streamingMedia: StreamingMedia
     ) {
       this.modeloMuseo = new MuseoModelo();
-      this.getMuseo(); 
-      
-      
+      this.getMuseo();   
   }
 
   ionViewDidLoad() {
@@ -51,18 +52,28 @@ export class MuseoPage {
   }
 
   getMuseo(){
+    let loader = this.loadingCtrl.create({
+      content:"Cargando ..."
+    });
+
+    loader.present();
     this.servicioMuseo.getMuseo('5bfa3b92157fa1127215cb9f').then((response:any) =>{
+      loader.dismiss();
       console.log(response);
       this.modeloMuseo = new MuseoModelo(response.jsnAnswer);
       console.log('Museo: '+JSON.stringify(this.modeloMuseo));
-      
-     
     }).catch(err=>{
+      loader.dismiss();
       this.alert.create({
         title:"Error",
         message: JSON.stringify(err)
       }).present();
     });
+  }
+
+  irSala = (sala:SalaModelo) =>  {
+    console.log(sala);
+    this.navCtrl.push(SalaPage,{idSala:sala._id});
   }
 
 }

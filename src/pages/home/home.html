@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar color="primary">
         <ion-row justify-content-between>
-            <ion-icon name="menu" color="light" col-2></ion-icon>
-            <ion-title col-10>Museo de la Muerte</ion-title>
+            <ion-icon name="menu" color="light" menuToggle></ion-icon>
+            <ion-title>Bienvenido</ion-title>
         </ion-row>
     </ion-navbar>
 </ion-header>
@@ -15,7 +15,7 @@
             <ion-slides *ngIf="arrayModeloEventos.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
                 [zoom]="true">
                 
-                <ion-slide col-12 no-margin no-padding *ngFor="let item of arrayModeloEventos">
+                <ion-slide col-12s no-margin no-padding *ngFor="let item of arrayModeloEventos" (click)="irEvento(item)">
                     <ion-card col-12 no-margin no-padding class="evento">
                         <img src="{{item.arrayStrImagen[0]}}" />
                         <div class="card-text-cont">

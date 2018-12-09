@@ -10,13 +10,13 @@
 
 export class ArtistaModelo{
     _id?:string;
-    strIdMuseo:string;
-    strNombre:string;
+    strIdMuseo:string= "";
+    strNombre:string = "";
     dteNacimiento:Date = new Date();
     arrayStrDatosCuriosos?:Array<string> = [''];
     arrayStrImagen:Array<string> = new Array();
-    strAudioDescripcion?: string;
-    blnActivo: Boolean = true;;
+    strAudioDescripcion?: string = "";
+    blnActivo: Boolean = true;
     blnDestacadaMuseo:Boolean = false;
 
     constructor(values: Object = {}) {

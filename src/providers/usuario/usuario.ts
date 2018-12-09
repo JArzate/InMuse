@@ -19,11 +19,15 @@ export class UsuarioProvider {
   }
 
   logIn = (correo:String, password:String) => {
-    return this.http.post(API_URL + "/usuario",{strCorreo:correo,strPassword:password},HTTPOptions).toPromise();
+    return this.http.post(API_URL + "/login",{strCorreo:correo,strPassword:password},HTTPOptions).toPromise();
   }
 
   updateUsuario = (usuario:UsuarioModelo) => {
     return this.http.put(API_URL + "/usuario",{modeloUsuario:usuario},HTTPOptions).toPromise();
+  }
+
+  register = (usuario:UsuarioModelo) => {
+    return this.http.post(API_URL + "/usuarioRegistro",{modeloUsuario:usuario}).toPromise();
   }
   
 }

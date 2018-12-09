@@ -15,9 +15,9 @@ export class UsuarioModelo{
     strCorreo:string = "";
     dteNacimiento:Date = new Date(); 
     strPassword:string = "";
-    intPuntaje?:Number = 0;
+    intPuntaje?:number = 0;
     strRol:string = "usuario";
-    blnPremium:Boolean = false;
+    blnPremium:boolean = false;
     
     constructor(values: Object = {}) {
         Object.assign(this, values);

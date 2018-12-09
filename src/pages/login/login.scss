@@ -1,0 +1,48 @@
+page-login {
+
+}
+page-login {
+    .fondo {
+
+        background-image: url('../../assets/imgs/fondo-login.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 70, 93, 0.55);
+        }
+        form {
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+            padding: 5%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .img-cont {
+                width: 80%;
+                margin: 0 auto;
+            }
+            input {
+                width: 100%;
+                padding: 10px;
+                border-radius: 10px;
+                border: none;
+                font-size: 18px;
+                &:not(:last-child) {
+                    margin-bottom: 3%;
+                }
+            }
+        }
+    }
+}

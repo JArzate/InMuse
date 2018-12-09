@@ -1,8 +1,10 @@
+import { ArtistaPage } from './../artista/artista';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { ObraModelo } from '../../modelos/obra-model';
 import { ObraProvider } from '../../providers/obra/obra';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
+import { ArtistaModelo } from '../../modelos/artista-model';
 
 /**
  * Generated class for the ObraPage page.
@@ -24,7 +26,8 @@ export class ObraPage {
     public navParams: NavParams,
     public servicioObra: ObraProvider,
     public alert: AlertController,
-    private streamingMedia: StreamingMedia
+    private streamingMedia: StreamingMedia,
+    private loadingCtrl:LoadingController,
     ) {
     this.modeloObra = new ObraModelo();
     this.arrayModeloObra = new Array();
@@ -32,12 +35,11 @@ export class ObraPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ObraPage');
-    this.getObra();
-  }
-
-  ngOnInit(): void {
-    //this.loadMap();
-    
+    if (this.navParams.get('idObra')){
+      this.getObra(this.navParams.get('idObra'));
+    }else{
+      this.navCtrl.pop();
+    }
   }
 
   reproducirAudio(){
@@ -50,11 +52,17 @@ export class ObraPage {
     this.streamingMedia.playAudio(this.modeloObra.strAudioDescripcion,options);
   }
 
-  async getObra(){
-    this.servicioObra.getObra("5bfab67d80250016e6470801").then((response:any)=>{
+  getObra(idObra:string){
+    let loader = this.loadingCtrl.create({
+      content:"Cargado ..."
+    });
+
+    loader.present();
+    this.servicioObra.getObra(idObra).then((response:any)=>{
+      loader.dismiss();
       if(response.intStatus == 1){
         this.modeloObra = new ObraModelo(response.jsnAnswer);
-        console.log(this.modeloObra);
+        console.log(response.jsnAnswer,"Aaaaaaa");
         this.getObraRelacionada();
       }else{
         this.alert.create({
@@ -89,6 +97,11 @@ export class ObraPage {
         message: JSON.stringify(err)
       }).present();
     });
+  }
+
+  irArtista = (artista:ArtistaModelo) => {
+    console.log(artista);
+    this.navCtrl.push(ArtistaPage,{idArtista:artista._id});
   }
 
 }

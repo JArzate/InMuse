@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Octubre
+      {{meses[(intMesSeleccionado-1)]}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -15,7 +15,7 @@
 <ion-content>
   <ion-row>
     <ul *ngIf="arrayModeloEvento.length > 0">
-      <li *ngFor="let evento of arrayModeloEvento" [ngStyle]="{'background-image':'url('+evento.arrayStrImagen[0]+')'}">
+      <li (click)="irEvento(evento)" *ngFor="let evento of arrayModeloEvento" [ngStyle]="{'background-image':'url('+evento.arrayStrImagen[0]+')'}">
         <div>
           <p class="dia">{{evento.dteCreacion | date:'d'}}</p>
           <p>{{evento.strNombre}}</p>

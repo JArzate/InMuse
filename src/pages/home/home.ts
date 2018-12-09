@@ -1,3 +1,4 @@
+import { UsuarioModelo } from './../../modelos/usuario-model';
 import { EventoModelo } from './../../modelos/evento-modelo';
 import { CalendarioPage } from './../calendario/calendario';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -13,6 +14,7 @@ import {
   Marker
 } from '@ionic-native/google-maps';
 import { EventoProvider } from '../../providers/evento/evento';
+import { EventoPage } from '../evento/evento';
 
 
 @Component({
@@ -22,6 +24,7 @@ import { EventoProvider } from '../../providers/evento/evento';
 export class HomePage {
    map: GoogleMap;
    arrayModeloEventos:Array<EventoModelo>;
+   user:UsuarioModelo;
 
   constructor(
     public navCtrl: NavController,
@@ -33,8 +36,9 @@ export class HomePage {
   }
 
   ngOnInit(): void {
-     //this.loadMap();
+     this.loadMap();    
     this.getEventosProximos();
+
   }
 
   loadMap(){
@@ -61,20 +65,11 @@ export class HomePage {
   }
 
   getPosition(): void{
-    this.map.getMyLocation()
-    .then(response => {
-      this.map.moveCamera({
-        target: response.latLng
-      });
-      this.map.addMarker({
-        title: 'My Position',
-        icon: 'blue',
-        animation: 'DROP',
-        position: response.latLng
-      });
-    })
-    .catch(error =>{
-      console.log(error);
+    this.map.addMarker({
+      title: 'Museo Escárcega',
+      icon: 'blue',
+      animation: 'DROP',
+      position: {lat:21.8847689,lng:-102.2879364}
     });
   }
 
@@ -98,6 +93,10 @@ export class HomePage {
         message: JSON.stringify(err)
       }).present();
     });
+  }
+
+  irEvento = (evento:EventoModelo) => {
+    this.navCtrl.push(EventoPage,{idEvento:evento._id});
   }
 
   

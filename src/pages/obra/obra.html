@@ -12,7 +12,7 @@
         [zoom]="true">
         
         <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloObra.arrayStrImagen">
-            <img src="{{image}}" class="img-resp">
+            <img [src]="image" class="img-resp">
         </ion-slide>
     </ion-slides>
   </section>
@@ -40,19 +40,18 @@
         {{modeloObra.strDescripcion}}
       </p>
     </ion-row>
-
-    <ion-row>
-      <p class="titulo-pequeno">{{ modeloObra.arrayModeloArtista.length > 1? 'Artistas' : 'Artista'}} </p>
-      <div class="radioIcon selected" *ngFor="let artista of modeloObra.arrayModeloArtista"  (click)="irArtista(artista)"><img [src]="artista.arrayStrImagen.length > 0 ? artista.arrayStrImagen[0] : false" /></div>
+    <ion-row class="cont-artista" *ngIf="modeloObra.arrayModeloArtista.length > 0">
+      <p class="titulo-pequeno mb-3" [ngStyle]="{'background-image':'url(' + modeloObra.arrayStrImagen[0] + ')'}">{{ modeloObra.arrayModeloArtista.length > 1? 'Artistas' : 'Artista'}} </p>
+      <div class="radioIcon selected" *ngFor="let artista of modeloObra.arrayModeloArtista" (click)="irArtista(artista)" >
+        <img [src]="artista.arrayStrImagen.length > 0 ? artista.arrayStrImagen[0] : false" />
+      </div>
     </ion-row>
-
-    <ion-row>
-      <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloObra.arrayStrImagen[0]+')'}">Datos Curiosos</p>
+    <ion-row *ngIf="modeloObra.arrayStrDatosCuriosos.length > 0">
+      <p class="titulo-pequeno" [ngStyle]="{'background-image':'url(' + modeloObra.arrayStrImagen[0] + ')'}">Datos Curiosos</p>
       <p class="parrafo" margin *ngFor="let dato of modeloObra.arrayStrDatosCuriosos">
-        * {{dato}}
+        • {{dato}}
       </p>
     </ion-row>
-    
   </section>
 
   <section id="obras-section">
@@ -61,7 +60,7 @@
       <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let obra of arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
-            <img src="{{obra.arrayStrImagen[0]}}" class="col-12" />
+            <img [src]="obra.arrayStrImagen[0]" class="col-12" />
             <div class="card-text-cont">
               <div class="card-title">{{obra.strTitulo}}</div>
               <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>

@@ -1,0 +1,33 @@
+<!--
+  Generated template for the EventoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        {{evento.strNombre}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content no-padding no-margin *ngIf="evento.arrayStrImagen.length > 0" >
+    <ion-row>
+      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+        <ion-slide col-12 no-margin no-padding *ngFor="let imagen of evento.arrayStrImagen" >
+          <ion-card col-12 no-margin no-padding class="evento">
+            <img [src]="imagen" />
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+      
+      <div class="text-cont" col-12 padding>
+        <p class="title-section">{{evento.strNombre}}</p>
+        <p text-center>{{evento.dteCreacion | date:'short'}}</p>
+        <p class="parrafo">
+          {{evento.strDescripcion}}
+        </p>
+      </div>
+    </ion-row>
+  </ion-content>

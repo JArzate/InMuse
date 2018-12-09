@@ -10,7 +10,6 @@
   <section id="banner">
     <ion-slides *ngIf="modeloSala.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
         [zoom]="true">
-        
         <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloSala.arrayStrImagen">
             <img src="{{image}}" class="img-resp">
         </ion-slide>
@@ -18,16 +17,6 @@
 
     <div class="text-cont">
       <p class="title-sala">{{modeloSala.strNombre}}</p>
-    </div>
-    <div class="ellipsis-fab fab" (click)="appear = !appear">
-      <i class="fa fa-ellipsis-v" *ngIf="!appear"></i>
-      <i class="fa fa-times" *ngIf="appear"></i>
-    </div>
-    <div [className]="appear ? 'appear qr-fab fab': 'qr-fab fab'">
-      <i class="fa fa-qrcode"></i>
-    </div>
-    <div [className]="appear ? 'appear search-fab fab': 'search-fab fab'">
-      <i class="fa fa-search"></i>
     </div>
 
     <div class="cont-fabs">
@@ -38,8 +27,18 @@
         <i class="fa fa-comment-alt"></i>
       </div>
     </div>
-
   </section>
+
+  <!-- <div class="ellipsis-fab fab" [ngClass]="{'appear':appear}"  (click)="appear = !appear">
+    <i class="fa fa-ellipsis-v" *ngIf="!appear"></i>
+    <i class="fa fa-times" *ngIf="appear"></i>
+  </div>
+  <div class="qr-fab fab" [ngClass]="{'appear':appear}">
+    <i class="fa fa-qrcode"></i>
+  </div>
+  <div class="search-fab fab" [ngClass]="{'appear':appear}">
+    <i class="fa fa-search"></i>
+  </div> -->
 
   <section id="info-sala" class="extended">
     <!-- <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a> -->
@@ -51,7 +50,7 @@
     <ion-row  >
         <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloSala.arrayStrImagen[0]+')'}">Datos Curiosos</p>
         <p class="parrafo" margin *ngFor="let dato of modeloSala.arrayStrDatosCuriosos">
-          * {{dato}}
+          • {{dato}}
         </p>
     </ion-row>
   </section>
@@ -62,7 +61,7 @@
       <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
         <ion-slide col-12 no-margin no-padding *ngFor="let obra of modeloSala.arrayModeloObraDestacada">
           <ion-card col-12 no-margin no-padding class="obra">
-            <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" class="col-12"/>
+            <img class="img-resp" [src]="obra.arrayStrImagen[0]" class="col-12"/>
             <div class="card-text-cont">
               <div class="card-title">{{obra.strTitulo}}</div>
               <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>
@@ -77,13 +76,13 @@
     <p class="title-section">Obras</p>
     <ion-row justify-content-around>
       <ion-card col-sm-12 col-md-5 col-lg-4 class="obra" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra">
-        <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" />
+        <img class="img-resp" [src]="obra.arrayStrImagen[0]" />
         <div class="card-text-cont">
           <div class="card-title">{{obra.strTitulo}}</div>
           <div class="card-subtitle">{{obra.arrayModeloArtista[0]}}</div>
         </div>
       </ion-card>
     </ion-row>
-
   </section>
+  
 </ion-content>

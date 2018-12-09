@@ -1,6 +1,6 @@
 import { ObraPage } from './../obra/obra';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { SalaModelo } from '../../modelos/sala-model';
 import { SalaProvider } from '../../providers/sala/sala';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
@@ -24,6 +24,7 @@ export class SalaPage {
   public idSala: string;
 
   constructor(
+    private loadingCtrl:LoadingController,
     public navCtrl: NavController, 
     public navParams: NavParams,
     private servicioSala: SalaProvider,
@@ -35,14 +36,11 @@ export class SalaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SalaPage');
-    this.idSala = this.navParams.get('idSala');
-    this.getSala();
-  }
-
-
-  ngOnInit(): void {
-    //this.loadMap();
-    
+    if(this.navParams.get('idSala')){
+      this.getSala(this.navParams.get('idSala'));
+    }else{
+      this.navCtrl.pop();
+    }
   }
 
   reproducirAudio(){
@@ -55,8 +53,14 @@ export class SalaPage {
     this.streamingMedia.playAudio(this.modeloSala.strAudioDescripcion,options);
   }
 
-  getSala(){
-    this.servicioSala.getSala(this.idSala).then((response:any)=>{
+  getSala(idSala:string){
+    let loader = this.loadingCtrl.create({
+      content:"Cargado ..."
+    });
+
+    loader.present();
+    this.servicioSala.getSala(idSala).then((response:any)=>{
+      loader.dismiss();
       if(response.intStatus == 1){
         this.modeloSala = new SalaModelo(response.jsnAnswer);
         console.log(this.modeloSala);
@@ -68,6 +72,7 @@ export class SalaPage {
       }
       
     }).catch(err=>{
+      loader.dismiss();
       this.alert.create({
         title:"Error",
         message: JSON.stringify(err)

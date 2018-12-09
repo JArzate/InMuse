@@ -19,4 +19,8 @@ export class ArtistaProvider {
     return this.http.get(API_URL + "/museolistaEventos/" + idMuseo, HTTPOptions).toPromise();
   }
 
+  getArtista = (idArtista:String) => {
+    return this.http.get(API_URL + "/artista/" + idArtista, HTTPOptions).toPromise();
+  }
+
 }

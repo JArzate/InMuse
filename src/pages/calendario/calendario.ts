@@ -24,7 +24,7 @@ export class CalendarioPage {
     console.log('ionViewDidLoad CalendarioPage');
   }
 
-  IrEventos = (intMes) => {
+  IrEventos = (intMes:number) => {
     console.log("Mes",intMes);
     this.navCtrl.push(EventosPage,{'intMes':intMes});
   }

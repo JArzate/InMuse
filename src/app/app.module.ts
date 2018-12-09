@@ -1,3 +1,7 @@
+import { ArtistaPage } from './../pages/artista/artista';
+import { LoginPage } from './../pages/login/login';
+import { EventoPage } from './../pages/evento/evento';
+import { NativeAudio } from '@ionic-native/native-audio';
 import { EventosPage } from './../pages/eventos/eventos';
 import { MuseoPage } from './../pages/museo/museo';
 import { CalendarioPage } from './../pages/calendario/calendario';
@@ -34,6 +38,8 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 import { AcertijoPage } from './../pages/acertijo/acertijo';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 //import { NgProgressModule } from 'ng2-progressbar';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegistroPage } from '../pages/registro/registro';
 
 @NgModule({
   declarations: [
@@ -41,22 +47,27 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     HomePage,
     ObraPage,
     SalaPage,
-    FeedbackPage,
-    SalasPage,
-    //FeedbackPage,
-    ElasticHeader,
     CalendarioPage,
     MuseoPage,
     EncuestaPage,
     EventosPage,
     RecorridosPage,
     AcertijoPage
+    EventoPage,
+    LoginPage,
+    RegistroPage,
+    SalasPage,
+    ArtistaPage,
+    RecorridosPage,
+    FeedbackPage
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,6 +84,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     EventosPage,
     RecorridosPage,
     AcertijoPage
+    EventoPage,
+    LoginPage,
+    RegistroPage,
+    SalasPage,
+    ArtistaPage,
+    RecorridosPage,
+    FeedbackPage
   ],
   providers: [
     StatusBar,
