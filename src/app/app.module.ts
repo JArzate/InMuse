@@ -33,7 +33,6 @@ import { ArtistaProvider } from '../providers/artista/artista';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { HttpClientModule } from '@angular/common/http';
 import { FeedbackPage } from '../pages/feedback/feedback';
-import { ElasticHeader } from '../directives/elastic-header/elastic-header';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { AcertijoPage } from './../pages/acertijo/acertijo';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -47,6 +46,9 @@ import { RegistroPage } from '../pages/registro/registro';
     HomePage,
     ObraPage,
     SalaPage,
+    FeedbackPage,
+    SalasPage,
+    //FeedbackPage,
     CalendarioPage,
     MuseoPage,
     EncuestaPage,

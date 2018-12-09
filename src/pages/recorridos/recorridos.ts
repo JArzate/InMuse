@@ -33,6 +33,12 @@ export class RecorridosPage {
     this.getRecorrido();
   }
 
+  IrRecorrido(recorrido:RecorridoModelo){
+    if(recorrido.strEstatus!="completado"){
+      alert("Si");
+    }
+  }
+
   getRecorrido = () => {
 
     this.recorridoProvider.getListaRecorridos("5bfa3b92157fa1127215cb9f","5bf75c0ad51ec707a8ea9d88").then((response:any)=>{

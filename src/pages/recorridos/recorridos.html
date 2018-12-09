@@ -14,18 +14,25 @@
 
 <ion-content>
   <ion-row *ngIf="arrayModeloRecorrido.length > 0">
-      <ion-card *ngFor="let recorrido of arrayModeloRecorrido">
-        <ion-card-header>
-          {{recorrido.strNombre}}
+      <ion-card (click)='IrRecorrido(recorrido)' *ngFor="let recorrido of arrayModeloRecorrido" [ngClass]='{"contenedor-desactivado": recorrido.strEstatus == "completado"}'>
+        <ion-card-header> 
+          <p  text-center class="titulo-recorrido">{{recorrido.strNombre}} </p>
         </ion-card-header>
-        <ion-card-content>
-          {{recorrido.strDescripcion}}
+        <ion-card-content class='parrafo'>
+          <div class='contenedor-pista-progreso' *ngIf='recorrido.strEstatus == "progreso"'>
+            <div class='contenedor-progreso'>
+              <div class='barra-progreso' [ngStyle]='{"width":(recorrido.intPistaActual*100/recorrido.intPistaTotal)+"%"}'><p>{{(recorrido.intPistaActual+1/recorrido.intPistaTotal)  | percent }}</p></div>
+            </div>
+            <div class='contenedor-pistas'>
+              <p class='titulo-pista'>{{recorrido.intPistaActual+1}} <span class="titulo-pista-pequeno">/{{recorrido.intPistaTotal}}</span></p>
+            </div>
+          </div>
+          <p class='titulo-completado' *ngIf='recorrido.strEstatus == "completado"'>Completado</p>
+          <p class='titulo-completado' *ngIf='recorrido.strEstatus == "pendiente"'>Comenzar</p>
+          <p *ngIf='recorrido.strEstatus == "pendiente"'>Total Pistas: {{recorrido.intPistaTotal}}</p>
+          <p>{{recorrido.strDescripcion}}</p>
           
         </ion-card-content>
-        <!--<ng-progress [minimum]="0" [maximum]="recorrido.intPistaActual/100"
-             [speed]="'200'" [direction]="'rightToLeftIncreased'"
-             [color]="'blue'"
-          ></ng-progress>-->
       </ion-card>
   </ion-row>
 </ion-content>
