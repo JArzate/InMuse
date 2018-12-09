@@ -76,7 +76,7 @@
   <section id="obras-section" *ngIf="modeloSala.arrayModeloObra.length > 0">
     <p class="title-section">Obras</p>
     <ion-row justify-content-around>
-      <ion-card col-sm-12 col-md-5 col-lg-4 class="obra" *ngFor="let obra of modeloSala.arrayModeloObra">
+      <ion-card col-sm-12 col-md-5 col-lg-4 class="obra" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra">
         <img class="img-resp" src="{{obra.arrayStrImagen[0]}}" />
         <div class="card-text-cont">
           <div class="card-title">{{obra.strTitulo}}</div>

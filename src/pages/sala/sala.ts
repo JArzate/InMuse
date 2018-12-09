@@ -1,8 +1,10 @@
+import { ObraPage } from './../obra/obra';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { SalaModelo } from '../../modelos/sala-model';
 import { SalaProvider } from '../../providers/sala/sala';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
+import { ObraModelo } from '../../modelos/obra-model';
 
 /**
  * Generated class for the SalaPage page.
@@ -71,5 +73,9 @@ export class SalaPage {
         message: JSON.stringify(err)
       }).present();
     });
+  }
+
+  irObra = (obra:ObraModelo) => {
+      this.navCtrl.push(ObraPage,{idObra:obra._id});
   }
 }

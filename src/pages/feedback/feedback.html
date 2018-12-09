@@ -29,12 +29,15 @@
         <div class="radioIcon" [ngClass]="{'selected':iconSelected=='indiferente'}" (click)="iconSelected='indiferente'"><img src="../../assets/imgs/4.jpg" /></div>
         <div class="radioIcon" [ngClass]="{'selected':iconSelected=='triste'}" (click)="iconSelected='triste'"><img src="../../assets/imgs/6.jpg" /></div>
         <div class="radioIcon" [ngClass]="{'selected':iconSelected=='enojado'}" (click)="iconSelected='enojado'"><img src="../../assets/imgs/7.jpg" /></div>
-  </div>
+    </div>
+
     <p class="emocion">{{iconSelected}}</p>
+    
     <ion-item>
       <ion-textarea placeholder="Dejanos un comentario sobre esta obra..." [(ngModel)]="comment"></ion-textarea>
     </ion-item>
-      <button class="btn" ion-button round (click)="sendComment()">Enviar</button>
+    <button class="btn" ion-button round (click)="sendComment()">Enviar</button>
+    
   </section>
 
 </ion-content>

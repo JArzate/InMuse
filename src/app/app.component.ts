@@ -18,7 +18,7 @@ import { AcertijoPage } from '../pages/acertijo/acertijo';
   templateUrl: 'app.html'
 })
 export class MyApp { 
-  rootPage:any = FeedbackPage;
+  rootPage:any = MuseoPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

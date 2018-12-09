@@ -40,6 +40,12 @@
         {{modeloObra.strDescripcion}}
       </p>
     </ion-row>
+
+    <ion-row>
+      <p class="titulo-pequeno">{{ modeloObra.arrayModeloArtista.length > 1? 'Artistas' : 'Artista'}} </p>
+      <div class="radioIcon selected" *ngFor="let artista of modeloObra.arrayModeloArtista"  (click)="irArtista(artista)"><img [src]="artista.arrayStrImagen.length > 0 ? artista.arrayStrImagen[0] : false" /></div>
+    </ion-row>
+
     <ion-row>
       <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloObra.arrayStrImagen[0]+')'}">Datos Curiosos</p>
       <p class="parrafo" margin *ngFor="let dato of modeloObra.arrayStrDatosCuriosos">
