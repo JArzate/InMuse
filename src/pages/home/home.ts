@@ -1,3 +1,4 @@
+import { MuseoProvider } from './../../providers/museo/museo';
 import { UsuarioModelo } from './../../modelos/usuario-model';
 import { EventoModelo } from './../../modelos/evento-modelo';
 import { CalendarioPage } from './../calendario/calendario';
@@ -29,10 +30,12 @@ export class HomePage {
    arrayModeloEventos:Array<EventoModelo>;
    user:UsuarioModelo = new UsuarioModelo();
 
+
   constructor(
     public navCtrl: NavController,
     private googleMaps: GoogleMaps,
     private servicioEvento: EventoProvider,
+    private museoProvider: MuseoProvider,
     private alert:AlertController,
     public storage:Storage
   ) {
@@ -45,7 +48,9 @@ export class HomePage {
   }
 
   ngOnInit(): void {
-    //this.loadMap();    
+    this.loadMap();
+    this.storage.remove('museo');   
+    this.museoProvider.museo = null; 
     this.getEventosProximos();
 
   }
@@ -57,7 +62,7 @@ export class HomePage {
           lat: 21.8847689, 
           lng: -102.2879364
         },
-        zoom: 18,
+        zoom: 15,
         tilt: 30
       }
     };
