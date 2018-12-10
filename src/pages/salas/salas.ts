@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { SalaProvider } from '../../providers/sala/sala';
 import { SalaModelo } from '../../modelos/sala-model';
 import { SalaPage } from '../sala/sala';
@@ -21,7 +21,8 @@ export class SalasPage {
     public navCtrl: NavController,
     public navParams: NavParams, 
     public salaProvider:SalaProvider,
-    private alert:AlertController
+    private alert:AlertController,
+    private loadingCtr:LoadingController
   ) {
     this.arrayModeloSala = new Array<SalaModelo>();
   }
@@ -37,9 +38,13 @@ export class SalasPage {
   }
 
   getSalas = () => {
+    let loader = this.loadingCtr.create({
+      content:"Cargando ..."
+    });
 
+    loader.present();
     this.salaProvider.getSalas(this.idMuseo).then((response:any)=>{
-      console.log(JSON.stringify(response));
+      loader.dismiss();
       if(response.intStatus == 1){
         this.arrayModeloSala = response.jsnAnswer;
       }else{
@@ -49,7 +54,8 @@ export class SalasPage {
         }).present();
       }
       
-    }).catch(err=>{
+    }).catch(err=>{4
+      loader.dismiss();
       this.alert.create({
         title:"Error",
         message: "Error al conectar con el servidor"

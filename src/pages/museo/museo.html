@@ -30,7 +30,7 @@
   <section id="info-museo" [className]="leer_mas? 'extended':''">
     <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a>
     <ion-row>
-      <p class="parrafo" margin *ngIf="modeloMuseo.strDescripcion.length > 0" >
+      <p class="parrafo" margin *ngIf="modeloMuseo.strDescripcion">
         {{modeloMuseo.strDescripcion}}
       </p>
     </ion-row>

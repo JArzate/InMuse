@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-row *ngIf="arrayModeloRecorrido.length > 0">
-      <ion-card (click)='IrRecorrido(recorrido)' *ngFor="let recorrido of arrayModeloRecorrido" [ngClass]='{"contenedor-desactivado": recorrido.strEstatus == "completado"}'>
+      <ion-card (click)='IrRecorrido(recorrido)' *ngFor="let recorrido of arrayModeloRecorrido;let i = index;" class="animated fadeInRight" [ngStyle]="{'amimation-delay':(i*250)+'ms'}" [ngClass]='{"contenedor-desactivado": recorrido.strEstatus == "completado"}'>
         <ion-card-header> 
           <p  text-center class="titulo-recorrido">{{recorrido.strNombre}} </p>
         </ion-card-header>

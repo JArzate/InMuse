@@ -47,7 +47,7 @@
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
       <ion-slides [autoplay]="modeloSala.arrayModeloObraDestacada.length > 1? 1500 : false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
-        <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of modeloSala.arrayModeloObraDestacada">
+        <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of modeloSala.arrayModeloObraDestacada;let i=index;">
           <ion-card col-12 no-margin no-padding class="obra">
             <img class="img-resp" [src]="obra.arrayStrImagen[0]" class="col-12"/>
             <div class="card-text-cont">
@@ -63,7 +63,7 @@
   <section id="obras-section" *ngIf="modeloSala.arrayModeloObra.length > 0">
     <p class="title-section">Obras</p>
     <ion-row justify-content-around>
-      <ion-card col-sm-12 col-md-5 col-lg-4 margin-bottom class="obra" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra">
+      <ion-card col-sm-12 col-md-5 col-lg-4 margin-bottom class="obra animated fadeInDown" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra;let i = index;">
         <img class="img-resp" [src]="obra.arrayStrImagen[0]" />
         <div class="card-text-cont">
           <div class="card-title">{{obra.strTitulo}}</div>

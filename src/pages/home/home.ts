@@ -48,7 +48,7 @@ export class HomePage {
   }
 
   ngOnInit(): void {
-    this.loadMap();
+    //this.loadMap();
     this.storage.remove('museo');   
     this.museoProvider.museo = null; 
     this.getEventosProximos();

@@ -15,7 +15,7 @@
 <ion-content>
   <ion-row>
     <ul *ngIf="arrayModeloSala.length > 0">
-      <li (click)="IrSala(sala)" *ngFor="let sala of arrayModeloSala" [ngStyle]="{'background-image':'url('+sala.arrayStrImagen[0]+')'}">
+      <li (click)="IrSala(sala)" class="animated fadeInRight" *ngFor="let sala of arrayModeloSala;let i=index;" [ngStyle]="{'background-image':'url('+sala.arrayStrImagen[0]+')','animation-delay':(i*200)+'ms'}">
         <div>
           <p class="dia">{{sala.strNombre}}</p>
         </div>

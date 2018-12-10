@@ -19,7 +19,7 @@
 <ion-content>
   <ion-row>
     <ul *ngIf="arrayModeloMuseo.length > 0">
-      <li (click)="IrMuseo(museo)" *ngFor="let museo of arrayModeloMuseo" [ngStyle]="{'background-image':'url('+museo.arrayStrImagen[0]+')'}">
+      <li (click)="IrMuseo(museo)" class="animated fadeInRight" *ngFor="let museo of arrayModeloMuseo;let i=index;" [ngStyle]="{'background-image':'url('+museo.arrayStrImagen[0]+')','animation-delay':(i*0.25) + 's'}">
         <div>
           <p class="dia">{{museo.strNombre}}</p>
         </div>
