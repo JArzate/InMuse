@@ -1,4 +1,35 @@
 <ion-menu [content]="content" [swipeEnabled]="true">
-    
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>{{user?.strNombre}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <ion-item (click)="irLoginPage()" menuClose *ngIf="!user" >
+                <ion-label>
+                    Iniciar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-in"></ion-icon>
+            </ion-item>
+
+            <ion-item menuClose (click)="irRecorridos()" *ngIf="user && museo">
+                <ion-label>
+                    Mis recorridos
+                </ion-label>
+                <ion-icon item-end name="game-controller-a"></ion-icon>
+            </ion-item>
+            
+            <ion-item  menuClose (click)="logOut()" *ngIf="user">
+                <ion-label>
+                    Cerrar Sesión
+                </ion-label>
+                <ion-icon item-end name="log-out"></ion-icon>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+
 </ion-menu>
 <ion-nav #content [root]="rootPage"></ion-nav>

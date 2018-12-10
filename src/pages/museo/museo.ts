@@ -1,10 +1,11 @@
+import { UsuarioProvider } from './../../providers/usuario/usuario';
 import { SalaPage } from './../sala/sala';
 import { SalaModelo } from './../../modelos/sala-model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { MuseoProvider } from '../../providers/museo/museo';
 import { MuseoModelo } from '../../modelos/museo-model';
-import {Platform} from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StreamingMedia, StreamingAudioOptions } from '@ionic-native/streaming-media';
 import { SalasPage } from '../salas/salas';
 import { EncuestaPage } from '../encuesta/encuesta';
@@ -29,99 +30,99 @@ import { ObraPage } from '../obra/obra';
 })
 export class MuseoPage {
   modeloMuseo: MuseoModelo;
-  public leer_mas:boolean = false;
-  idMuseo: string;
-  user:UsuarioModelo = new UsuarioModelo();
+  public leer_mas: boolean = false;
+  user: UsuarioModelo;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public servicioMuseo: MuseoProvider,
-    private alert:AlertController,
-    private loadingCtrl:LoadingController,
-    private platform:Platform,
+    private alert: AlertController,
+    private loadingCtrl: LoadingController,
     private streamingMedia: StreamingMedia,
-    public storage:Storage
-    ) {
-      this.modeloMuseo = new MuseoModelo();
-      this.idMuseo = this.navParams.get('idMuseo');
-      
-      if (this.storage.get('usuario')){
-        this.storage.get('usuario').then((usuario:any)=>{
-          this.user = new UsuarioModelo(usuario);
-        });
-      }
-      this.getMuseo();   
+    public storage: Storage,
+    private usuarioProvider: UsuarioProvider
+  ) {
+
+    this.modeloMuseo = new MuseoModelo();
+
+    if (this.navParams.get('idMuseo')){
+      this.storage.get('usuario').then((usuario: any) => {
+        this.usuarioProvider.user = usuario;
+      });
+      this.getMuseo(this.navParams.get('idMuseo'));
+    }else{
+      this.navCtrl.pop();
+    }
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MuseoPage');
   }
 
-  reproducirAudio(){
+  ngDoCheck(): void {
+    this.modeloMuseo = this.servicioMuseo.museo;
+    this.user = this.usuarioProvider.user;
+  }
+
+  reproducirAudio() {
     console.log("va a reproducir");
     let options: StreamingAudioOptions = {
       successCallback: () => { console.log('Video played') },
       errorCallback: (e) => { console.log('Error streaming') },
       bgImage: this.modeloMuseo.arrayStrImagen[0]
     };
-    this.streamingMedia.playAudio(this.modeloMuseo.strAudioDescripcion,options);
+    this.streamingMedia.playAudio(this.modeloMuseo.strAudioDescripcion, options);
   }
 
   IrSalas = () => {
-    this.navCtrl.push(SalasPage,{'idMuseo':this.modeloMuseo._id});
+    this.navCtrl.push(SalasPage, { 'idMuseo': this.modeloMuseo._id });
   }
 
-  getMuseo(){
+  getMuseo(idMuseo:string) {
     let loader = this.loadingCtrl.create({
-      content:"Cargando ..."
+      content: "Cargando ..."
     });
 
     loader.present();
-    this.servicioMuseo.getMuseo(this.idMuseo).then((response:any) =>{
+    this.servicioMuseo.getMuseo(idMuseo).then((response: any) => {
       loader.dismiss();
-      console.log(response);
-      this.modeloMuseo = new MuseoModelo(response.jsnAnswer);
-      this.navCtrl.push(EncuestaPage,{"idMuseo":this.modeloMuseo._id});
-      console.log('Museo: '+JSON.stringify(this.modeloMuseo));
-    }).catch(err=>{
+      if (response.intStatus == 1){
+        this.servicioMuseo.museo = response.jsnAnswer;
+        console.log(this.servicioMuseo.museo,"museo");
+        
+        this.modeloMuseo = this.servicioMuseo.museo;
+        this.storage.set('museo',response.jsnAnswer).then(()=>{
+          if (this.modeloMuseo.arrayStrPreguntas && this.modeloMuseo.arrayStrPreguntas.length > 0) {
+            this.navCtrl.push(EncuestaPage, { "idMuseo": this.modeloMuseo._id });
+          }
+        });
+      }
+    }).catch(err => {
       loader.dismiss();
       this.alert.create({
-        title:"Error",
+        title: "Error",
         message: JSON.stringify(err)
       }).present();
     });
   }
 
-  irSala = (sala:SalaModelo) =>  {
+  irSala = (sala: SalaModelo) => {
     console.log(sala);
-    this.navCtrl.push(SalaPage,{'idSala':sala._id});
+    this.navCtrl.push(SalaPage, { 'idSala': sala._id });
   }
 
-  irObra = (obra:ObraModelo) =>  {
+  irObra = (obra: ObraModelo) => {
     console.log(obra);
-    this.navCtrl.push(ObraPage,{'idObra':obra._id});
+    this.navCtrl.push(ObraPage, { 'idObra': obra._id });
   }
 
-  IrFeedback(){
-    this.navCtrl.push(FeedbackPage,{
-      'idMuseo':this.modeloMuseo._id,
-      'idColeccion':this.modeloMuseo._id,
-      'strColeccion':"museo",
+  IrFeedback() {
+    this.navCtrl.push(FeedbackPage, {
+      'idMuseo': this.modeloMuseo._id,
+      'idColeccion': this.modeloMuseo._id,
+      'strColeccion': "museo",
       'strTitulo': this.modeloMuseo.strNombre,
       'strImagen': this.modeloMuseo.arrayStrImagen[0]
     })
-  }
-
-  IrRecorridos(){
-    this.navCtrl.push(RecorridosPage,{'idMuseo':this.modeloMuseo._id});
-  }
-  
-  irLoginPage = () => {
-    this.navCtrl.push(LoginPage,{'blnMuseo':true});
-  }
-
-  logOut = () =>{
-    this.storage.remove('usuario').then(()=>{
-      this.user = null;
-    });
   }
 
 }

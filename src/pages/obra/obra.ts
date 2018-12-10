@@ -121,6 +121,8 @@ export class ObraPage {
   }
 
   IrRecorridos = () => {
+    console.log(this.modeloObra);
+    
     this.navCtrl.push(RecorridosPage,{idMuseo:this.modeloObra.strIdMuseo});
   }
 

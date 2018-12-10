@@ -1,7 +1,8 @@
+import { MuseoProvider } from './../../providers/museo/museo';
+import { UsuarioProvider } from './../../providers/usuario/usuario';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Alert, LoadingController } from 'ionic-angular';
 import { MuseoModelo } from '../../modelos/museo-model';
-import { MuseoProvider } from '../../providers/museo/museo';
 import { MuseoPage } from '../museo/museo';
 
 /**
@@ -22,9 +23,9 @@ export class MuseosPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
-    public museoProvider:MuseoProvider,
     private alert:AlertController,
-    private loadingCtrl:LoadingController
+    private loadingCtrl:LoadingController,
+    private museoProvider:MuseoProvider
   ) {
     this.arrayModeloMuseo = new Array<MuseoModelo>();
   }
@@ -35,7 +36,7 @@ export class MuseosPage {
   }
 
   IrMuseo = (museo:MuseoModelo) => {
-    this.navCtrl.push(MuseoPage,{'idMuseo':museo._id});
+    this.navCtrl.setRoot(MuseoPage,{'idMuseo':museo._id});
   }
 
   getMuseos = () => {

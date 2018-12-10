@@ -18,6 +18,9 @@ page-feedback {
             }
         }
     }
+    .img-cont{
+        position: relative;
+    }
 
     .img-cont::after{
         content: '';
@@ -33,6 +36,9 @@ page-feedback {
     .img-cont h1{
         position: absolute;
         text-align: center;
+        top:50% !important;
+        left:50%;
+        transform: translate(-50%,-50%);
         color: #fff;
         z-index: 2;
         top: 0;
@@ -91,6 +97,7 @@ page-feedback {
     .cont-pregunta{
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
         justify-content: space-between;
         margin-bottom: 20px;
     }
@@ -126,5 +133,4 @@ page-feedback {
     .text-input-md {
         height: 100px;
     }
-
 }

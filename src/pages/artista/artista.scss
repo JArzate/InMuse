@@ -7,5 +7,10 @@ page-artista {
 
     #artista {
         width: 100%;
+        img{
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
     }
 }

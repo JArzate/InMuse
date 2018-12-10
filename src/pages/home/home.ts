@@ -45,7 +45,7 @@ export class HomePage {
   }
 
   ngOnInit(): void {
-    this.loadMap();    
+    //this.loadMap();    
     this.getEventosProximos();
 
   }

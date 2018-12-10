@@ -51,11 +51,10 @@ export class EncuestaPage {
   }
 
   continuar(){
-    console.log("Respuestas",this.preguntas);
     this.servicioMuseo.setEncuesta(this.idMuseo,this.idMuseo,'museo',this.preguntas).then((response:any) =>{
         if(response.intStatus == 1){
           this.alert.create({
-            title: 'Gracias',
+            title: '¡Gracias!',
             message: 'Tus respuestas nos sirven mucho :)',
             enableBackdropDismiss: false,
             buttons: [

@@ -14,7 +14,7 @@
   
   <ion-content no-padding no-margin *ngIf="evento.arrayStrImagen.length > 0" >
     <ion-row>
-      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+      <ion-slides [autoplay]="evento.arrayStrImagen.length > 1 ? 1500:false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let imagen of evento.arrayStrImagen" >
           <ion-card col-12 no-margin no-padding class="evento">
             <img [src]="imagen" />

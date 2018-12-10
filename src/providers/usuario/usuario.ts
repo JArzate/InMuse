@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class UsuarioProvider {
-
+  public user:UsuarioModelo;
   constructor(public http: HttpClient, public storage:Storage) {
     console.log('Hello UsuarioProvider Provider');
   }

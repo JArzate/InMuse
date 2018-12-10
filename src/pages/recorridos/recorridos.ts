@@ -1,3 +1,4 @@
+import { MuseoProvider } from './../../providers/museo/museo';
 import { UsuarioModelo } from './../../modelos/usuario-model';
 import { AcertijoPage } from './../acertijo/acertijo';
 import { Component } from '@angular/core';
@@ -6,6 +7,8 @@ import { RecorridoProvider } from '../../providers/recorrido/recorrido';
 import { RecorridoModelo } from '../../modelos/recorrido-model';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { MuseoModelo } from '../../modelos/museo-model';
 
 /**
  * Generated class for the RecorridosPage page.
@@ -22,28 +25,57 @@ export class RecorridosPage {
 
   public arrayModeloRecorrido: Array<RecorridoModelo>;
   user:UsuarioModelo;
-  strIdMuseo:string;
+  museo:MuseoModelo;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public recorridoProvider:RecorridoProvider,
     private alert:AlertController,
-    public storage:Storage
+    public storage:Storage,
+    private usuarioProvider:UsuarioProvider,
+    private museoProvider:MuseoProvider
     ) {
       this.arrayModeloRecorrido = new Array<RecorridoModelo>();
 
   }
 
+  ngDoCheck(): void {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    //Add 'implements DoCheck' to the class.
+    this.user = this.usuarioProvider.user;
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RecorridosPage');
-    if (this.storage.get('usuario')){
-      this.storage.get('usuario').then((usuario:any)=>{
-        this.user = usuario;
-        this.strIdMuseo = this.navParams.get('idMuseo');
-        this.getRecorrido();
-      });
+    this.storage.get('usuario').then((usuario:any)=>{
+      this.usuarioProvider.user = usuario;
+      this.user = usuario;
+    });
+
+    console.log(this.user);
+    console.log(this.navParams.get('idMuseo'));
+      
+    
+    if (this.user != null && this.navParams.get('idMuseo')){
+      this.getRecorrido(this.navParams.get('idMuseo'));
     }else{
-      this.navCtrl.pop();
+      this.alert.create({
+        title:"¡Hey!",
+        message:"Necesitas iniciar sesión para continuar",
+        buttons:[
+          {
+            text:"Iniciar sesión",
+            handler:()=>{
+              this.navCtrl.push(LoginPage);
+            }
+          },
+          {
+            text:"Cancelar",
+            handler:()=>{
+              this.navCtrl.pop();
+            }
+          }
+        ]
+      }).present();
     }
   }
 
@@ -70,8 +102,8 @@ export class RecorridosPage {
     }
   }
 
-  getRecorrido = () => {
-    this.recorridoProvider.getListaRecorridos(this.strIdMuseo,this.user._id).then((response:any)=>{
+  getRecorrido = (idMuseo:string) => {
+    this.recorridoProvider.getListaRecorridos(idMuseo,this.user._id).then((response:any)=>{
       console.log(JSON.stringify(response));
       if(response.intStatus == 1){
         this.arrayModeloRecorrido = response.jsnAnswer;   

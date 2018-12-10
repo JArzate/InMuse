@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Museo de la Muerte
+      {{modeloObra.strTitulo}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <section id="obra">
-    <ion-slides *ngIf="modeloObra.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
+    <ion-slides *ngIf="modeloObra.arrayStrImagen.length > 0" [autoplay]="modeloObra.arrayStrImagen.length > 1? 1500 : false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
         [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloObra.arrayStrImagen">
             <img [src]="image" class="img-resp">
@@ -17,46 +17,46 @@
   </section>
 
   <div class="cont-fabs">
-    <div class="info-fab fab" (click)="IrFeedback()">
+    <button ion-button class="info-fab fab" (click)="IrFeedback()">
       <i class="fa fa-star"></i>
-    </div>
-    <div class="audio-fab fab">
-      <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
-    </div>
-    <div class="feedback-fab fab" (click)="IrRecorridos()">
+    </button>
+    <button ion-button class="audio-fab fab" (click)="reproducirAudio()" [disabled]="!modeloObra.strAudioDescripcion">
+      <i class="fa fa-volume-up" ></i>
+    </button>
+    <button ion-button class="feedback-fab fab" (click)="IrRecorridos()">
       <i class="fa fa-puzzle-piece"></i>
-    </div>
+    </button>
   </div>
 
   <section id="info-obra">
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
       <p class="title-obra">{{modeloObra.strTitulo}}</p>
-      <p class="title-autor">{{modeloObra.arrayModeloArtista.length > 1 ? "Autores:" : "Autor:" }} <span *ngFor="let autor of modeloObra.arrayModeloArtista; let i = index"> {{ (i+1)==modeloObra.arrayModeloArtista.length ? autor.strNombre : autor.strNombre+"," }} </span></p>
+      <p class="title-autor">{{modeloObra.arrayModeloArtista.length > 1 ? "Autores:" : "Autor:" }} <span *ngFor="let autor of modeloObra.arrayModeloArtista; let i = index"> {{ (i+1)==modeloObra.arrayModeloArtista.length ? autor.strNombre : autor.strNombre+", " }} </span></p>
       <p class="fecha">{{modeloObra.dteCreacion | date:'d MMMM yy'}}</p>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="modeloObra.strDescripcion" >
       <p class="parrafo" margin>
         {{modeloObra.strDescripcion}}
       </p>
     </ion-row>
+
     <ion-row class="cont-artista" *ngIf="modeloObra.arrayModeloArtista.length > 0">
       <p class="titulo-pequeno mb-3" [ngStyle]="{'background-image':'url(' + modeloObra.arrayStrImagen[0] + ')'}">{{ modeloObra.arrayModeloArtista.length > 1? 'Artistas' : 'Artista'}} </p>
       <div class="radioIcon selected" *ngFor="let artista of modeloObra.arrayModeloArtista" (click)="irArtista(artista)" >
         <img [src]="artista.arrayStrImagen.length > 0 ? artista.arrayStrImagen[0] : false" />
       </div>
     </ion-row>
+
     <ion-row *ngIf="modeloObra.arrayStrDatosCuriosos.length > 0">
       <p class="titulo-pequeno" [ngStyle]="{'background-image':'url(' + modeloObra.arrayStrImagen[0] + ')'}">Datos Curiosos</p>
-      <p class="parrafo" margin *ngFor="let dato of modeloObra.arrayStrDatosCuriosos">
-        • {{dato}}
-      </p>
+      <p class="parrafo"  margin *ngFor="let dato of modeloObra.arrayStrDatosCuriosos">{{dato}}</p>
     </ion-row>
   </section>
 
   <section id="obras-section">
     <ion-row *ngIf="arrayModeloObra.length > 0">
       <p class="title-section">Obras relacionadas</p>
-      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
+      <ion-slides [autoplay]="arrayModeloObra.length > 1 ? 1500:false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true">
         <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of arrayModeloObra">
           <ion-card col-12 no-margin no-padding class="obra">
             <img [src]="obra.arrayStrImagen[0]" class="col-12" />

@@ -1,3 +1,4 @@
+import { MuseoModelo } from './../../modelos/museo-model';
 import { API_URL, HTTPOptions } from './../../config/config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,7 +12,7 @@ import { PreguntaModelo } from '../../modelos/pregunta-model';
 */
 @Injectable()
 export class MuseoProvider {
-
+  museo:MuseoModelo;
   constructor(public http: HttpClient) {
     console.log('Hello MuseoProvider Provider');
   }

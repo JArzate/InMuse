@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Museo de la Muerte
+      {{modeloSala.strNombre}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <section id="banner">
-    <ion-slides *ngIf="modeloSala.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
+    <ion-slides *ngIf="modeloSala.arrayStrImagen.length > 0" [autoplay]="modeloSala.arrayStrImagen.length > 1 ? 1500:false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true"
         [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let image of modeloSala.arrayStrImagen">
             <img src="{{image}}" class="img-resp">
@@ -21,48 +21,32 @@
 
     <div class="cont-fabs">
       
-      <div class="info-fab fab" (click)="IrFeedback()">
+      <button ion-button class="info-fab fab" (click)="IrFeedback()">
         <i class="fa fa-star"></i>
-      </div>
-      <div class="audio-fab fab">
-        <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
-      </div>
-      <div class="fab">
-        <i class="fa fa-qrcode" (click)="escanearQr()"></i>
-      </div>
+      </button>
+      <button ion-button class="audio-fab fab" (click)="reproducirAudio()" [disabled]="!modeloSala.strAudioDescripcion">
+        <i class="fa fa-volume-up"></i>
+      </button>
+      <button ion-button class="fab" (click)="escanearQr()">
+        <i class="fa fa-qrcode"></i>
+      </button>
     </div>
   </section>
 
-  <!-- <div class="ellipsis-fab fab" [ngClass]="{'appear':appear}"  (click)="appear = !appear">
-    <i class="fa fa-ellipsis-v" *ngIf="!appear"></i>
-    <i class="fa fa-times" *ngIf="appear"></i>
-  </div>
-  <div class="qr-fab fab" [ngClass]="{'appear':appear}">
-    <i class="fa fa-qrcode"></i>
-  </div>
-  <div class="search-fab fab" [ngClass]="{'appear':appear}">
-    <i class="fa fa-search"></i>
-  </div> -->
-
   <section id="info-sala" class="extended">
-    <!-- <a href="#" class="btn" (click)="leer_mas = !leer_mas">{{!leer_mas? 'Leer más': 'Mostrar menos'}}</a> -->
-    <ion-row>
-      <p class="parrafo" margin>
-        {{modeloSala.strDescripcion}}
-      </p>
+    <ion-row *ngIf="modeloSala.strDescripcion" >
+      <p class="parrafo" margin>{{modeloSala.strDescripcion}}</p>
     </ion-row>
-    <ion-row  >
+    <ion-row *ngIf="modeloSala.arrayStrDatosCuriosos.length > 0">
         <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+modeloSala.arrayStrImagen[0]+')'}">Datos Curiosos</p>
-        <p class="parrafo" margin *ngFor="let dato of modeloSala.arrayStrDatosCuriosos">
-          • {{dato}}
-        </p>
+        <p class="parrafo" margin *ngFor="let dato of modeloSala.arrayStrDatosCuriosos">{{dato}}</p>
     </ion-row>
   </section>
 
   <section id="slider-destacadas" *ngIf="modeloSala.arrayModeloObraDestacada.length > 0">
     <p class="title-section">Obras destacadas</p>
     <ion-row col-sm-12 col-md-12 col-lg-12 no-margin no-padding>
-      <ion-slides [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
+      <ion-slides [autoplay]="modeloSala.arrayModeloObraDestacada.length > 1? 1500 : false" [centeredSlides]="true" [effect]="'slide'" [control]="true" [loop]="true" [zoom]="true" >
         <ion-slide (click)="irObra(obra)" col-12 no-margin no-padding *ngFor="let obra of modeloSala.arrayModeloObraDestacada">
           <ion-card col-12 no-margin no-padding class="obra">
             <img class="img-resp" [src]="obra.arrayStrImagen[0]" class="col-12"/>
@@ -79,7 +63,7 @@
   <section id="obras-section" *ngIf="modeloSala.arrayModeloObra.length > 0">
     <p class="title-section">Obras</p>
     <ion-row justify-content-around>
-      <ion-card col-sm-12 col-md-5 col-lg-4 class="obra" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra">
+      <ion-card col-sm-12 col-md-5 col-lg-4 margin-bottom class="obra" (click)="irObra(obra)" *ngFor="let obra of modeloSala.arrayModeloObra">
         <img class="img-resp" [src]="obra.arrayStrImagen[0]" />
         <div class="card-text-cont">
           <div class="card-title">{{obra.strTitulo}}</div>

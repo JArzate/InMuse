@@ -15,7 +15,7 @@
 <ion-content no-padding no-margin>
   <ion-row>
     <section id="artista">
-      <ion-slides *ngIf="artista.arrayStrImagen.length > 0" [autoplay]="1000" [centeredSlides]="true" [effect]="'slide'" [zoom]="true">
+      <ion-slides *ngIf="artista.arrayStrImagen.length > 0" [autoplay]="artista.arrayStrImagen.length > 1 ? 1500: false" [centeredSlides]="true" [effect]="'slide'" [zoom]="true">
         <ion-slide col-12 no-margin no-padding *ngFor="let image of artista.arrayStrImagen">
           <img [src]="image" class="img-resp">
         </ion-slide>
@@ -23,19 +23,17 @@
     </section>
 
     <div class="cont-fabs">
-      <div class="audio-fab fab">
-        <i class="fa fa-volume-up" (click)="reproducirAudio()"></i>
-      </div>
+      <button ion-button class="audio-fab fab" (click)="reproducirAudio()" [disabled]="!artista.strAudioDescripcion">
+        <i class="fa fa-volume-up"></i>
+      </button>
     </div>
 
-    <div class="text-cont" col-12 padding>
+    <div class="text-cont">
       <p class="title-section">{{artista.strNombre}}</p>
       <p text-center>{{artista.dteNacimiento | date:'short'}}</p>
       <ion-row *ngIf="artista.arrayStrDatosCuriosos.length > 0">
         <p class="titulo-pequeno" [ngStyle]="{'background-image':'url('+artista.arrayStrImagen[0]+')'}">Datos Curiosos</p>
-        <p class="parrafo" margin *ngFor="let dato of artista.arrayStrDatosCuriosos">
-          • {{dato}}
-        </p>
+        <p class="parrafo" margin *ngFor="let dato of artista.arrayStrDatosCuriosos">{{dato}}</p>
       </ion-row>
     </div>
   </ion-row>
